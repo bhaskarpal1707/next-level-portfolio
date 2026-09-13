@@ -14,6 +14,23 @@ import portrait from "@/assets/bhaskar-portrait.jpg";
  *   3. known paths on the old portfolio site (bhaskarpal1707.github.io)
  *   4. silent poster fallback (site still looks complete)
  */
+
+/**
+ * A candidate "counts" only if the server returns a non-HTML response.
+ * Dev servers (and GH Pages 404s) fall back to serving index.html with a
+ * 200 status for unknown paths — mounting a <video> against that HTML is
+ * what throws "The element has no supported sources".
+ */
+async function looksLikeVideo(url: string): Promise<boolean> {
+  try {
+    const r = await fetch(url, { method: "HEAD" });
+    if (!r.ok) return false;
+    const ct = (r.headers.get("content-type") ?? "").toLowerCase();
+    return !ct.includes("text/html");
+  } catch {
+    return false;
+  }
+}
 const LOCAL_CANDIDATES = ["video.mp4"];
 const REMOTE_BASE = "https://bhaskarpal1707.github.io/portfolio";
 const REMOTE_CANDIDATES = [
@@ -27,20 +44,12 @@ const REMOTE_CANDIDATES = [
 async function findSource(): Promise<string | null> {
   if (profile.videoUrl) return profile.videoUrl;
   for (const p of LOCAL_CANDIDATES) {
-    try {
-      const r = await fetch(p, { method: "HEAD" });
-      if (r.ok) return p;
-    } catch {
-      /* ignore */
-    }
+    if (await looksLikeVideo(p)) return p;
   }
+  // Remote candidates are usually blocked by CORS (fails silently → skipped).
   for (const p of REMOTE_CANDIDATES) {
-    try {
-      const r = await fetch(REMOTE_BASE + p, { method: "HEAD" });
-      if (r.ok) return REMOTE_BASE + p;
-    } catch {
-      /* ignore */
-    }
+    const url = REMOTE_BASE + p;
+    if (await looksLikeVideo(url)) return url;
   }
   return null;
 }
@@ -72,7 +81,7 @@ export default function VideoShowcase() {
     const v = videoRef.current;
     if (!v) return;
     if (v.paused) {
-      void v.play();
+      v.play().catch(() => setPlaying(false));
       setPlaying(true);
     } else {
       v.pause();
@@ -102,6 +111,12 @@ export default function VideoShowcase() {
                 preload="metadata"
                 onPause={() => setPlaying(false)}
                 onPlay={() => setPlaying(true)}
+                onError={() => {
+                  // Bad/unsupported source → fall back to the poster state
+                  // instead of leaving a broken <video> element mounted.
+                  setSrc(null);
+                  setState("missing");
+                }}
               />
               {!playing && (
                 <motion.button
