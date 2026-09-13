@@ -231,7 +231,7 @@ export const experiences: Experience[] = [
 ];
 
 /* ───────────────────────────── SKILLS ─────────────────────────────
- * Logos resolve through <SkillLogo/> (react-icons Devicon/Simple Icons,
+ * Logos resolve through <SkillLogo/> (Devicon components + hand-drawn
  * with hand-drawn brand marks for logos no longer in the icon sets).
  * Headings are copied verbatim from the old portfolio.
  * ─────────────────────────────────────────────────────────────────── */

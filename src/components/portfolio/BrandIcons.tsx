@@ -1,21 +1,42 @@
 import { useState } from "react";
-import {
-  TbBrandLinkedin,
-  TbBrandGithub,
-  TbBrandFacebook,
-  TbBrandX,
-} from "react-icons/tb";
-import { SiHuggingface } from "react-icons/si";
-import { FiMail } from "react-icons/fi";
+import { Linkedin, Github, Facebook, Mail } from "lucide-react";
 import { socials, type Social } from "@/data/portfolio";
 
+/** X (Twitter) — bold crossing strokes. */
+function XMark({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path
+        d="M4.5 3.5L20.5 20.5M19.5 3.5L4.5 20.5"
+        stroke="currentColor"
+        strokeWidth="2.6"
+        strokeLinecap="square"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
+/** Hugging Face — the brand IS the emoji. */
+function HfMark({ className = "" }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      className={`flex items-center justify-center leading-none ${className}`}
+      style={{ fontSize: "0.95em" }}
+    >
+      🤗
+    </span>
+  );
+}
+
 const ICONS = {
-  linkedin: TbBrandLinkedin,
-  github: TbBrandGithub,
-  facebook: TbBrandFacebook,
-  x: TbBrandX,
-  huggingface: SiHuggingface,
-  mail: FiMail,
+  linkedin: Linkedin,
+  github: Github,
+  facebook: Facebook,
+  x: XMark,
+  huggingface: HfMark,
+  mail: Mail,
 } as const;
 
 /** Single brand glyph. */
@@ -67,8 +88,8 @@ export default function Socials({ className = "" }: { className?: string }) {
 }
 
 /**
- * Skill logo with graceful fallback: renders the verified brand mark, or a
- * monogram tile if the remote SVG ever fails (no broken-image icons).
+ * Image with graceful fallback: renders a monogram tile if the source
+ * ever fails (no broken-image icons anywhere on the site).
  */
 export function SafeImg({
   src,
