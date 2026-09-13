@@ -25,41 +25,41 @@ export default function Certifications() {
                 href={c.url}
                 target="_blank"
                 rel="noreferrer"
-                className={`group relative flex items-center gap-4 overflow-hidden px-5 py-5 transition-colors duration-300 hover:bg-teal-300/[0.05] sm:px-7 ${
+                className={`group relative flex items-center gap-4 overflow-hidden px-5 py-5 transition-colors duration-300 hover:bg-amber-400/[0.05] sm:px-7 ${
                   i !== certifications.length - 1 ? "border-b border-white/8" : ""
                 }`}
               >
                 {/* sheen */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-teal-300/[0.07] to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+                  className="pointer-events-none absolute inset-0 -transtone-x-full bg-gradient-to-r from-transparent via-amber-400/[0.07] to-transparent transition-transform duration-700 ease-out group-hover:transtone-x-full"
                 />
 
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-teal-300/25 bg-teal-300/[0.07] text-teal-300 transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(94,234,212,0.35)]">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-amber-400/25 bg-amber-400/[0.07] text-amber-400 transition-shadow duration-300 group-hover:shadow-[0_0_20px_rgba(94,234,212,0.35)]">
                   <BadgeCheck className="h-5 w-5" />
                 </span>
 
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate font-display text-base font-semibold text-slate-100 sm:text-lg">
+                  <span className="block truncate font-display text-base font-semibold text-stone-100 sm:text-lg">
                     {c.title}
                   </span>
-                  <span className="mt-0.5 block font-mono2 text-[11px] uppercase tracking-[0.2em] text-slate-500">
+                  <span className="mt-0.5 block font-mono2 text-[11px] uppercase tracking-[0.2em] text-stone-500">
                     {c.issuer}
                   </span>
                 </span>
 
-                <span className="hidden shrink-0 font-mono2 text-[11px] tracking-[0.2em] text-slate-500 sm:block">
+                <span className="hidden shrink-0 font-mono2 text-[11px] tracking-[0.2em] text-stone-500 sm:block">
                   {c.year}
                 </span>
 
-                <ArrowUpRight className="h-4 w-4 shrink-0 text-slate-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal-300" />
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-stone-600 transition-all duration-300 group-hover:-transtone-y-0.5 group-hover:transtone-x-0.5 group-hover:text-amber-400" />
               </a>
             </Reveal>
           ))}
         </div>
 
         <Reveal delay={0.2}>
-          <p className="mt-8 text-center font-mono2 text-[11px] tracking-[0.2em] text-slate-600">
+          <p className="mt-8 text-center font-mono2 text-[11px] tracking-[0.2em] text-stone-600">
             FULL CREDENTIAL LINKS AVAILABLE ON LINKEDIN → /IN/BHASKAR-PAL-2K02
           </p>
         </Reveal>

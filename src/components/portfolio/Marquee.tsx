@@ -33,10 +33,10 @@ export default function Marquee({
         {row.map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className="mx-4 flex shrink-0 items-center gap-4 font-display text-lg font-medium text-slate-400/90 sm:text-xl"
+            className="mx-4 flex shrink-0 items-center gap-4 font-display text-lg font-medium text-stone-400/90 sm:text-xl"
           >
             {item}
-            <span className="text-teal-300/70">✦</span>
+            <span className="text-amber-400/70">✦</span>
           </span>
         ))}
       </div>

@@ -64,10 +64,10 @@ export default function Home() {
             className="glass inline-flex items-center gap-2.5 rounded-full px-4 py-1.5"
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-300 opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-300" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-400" />
             </span>
-            <span className="font-mono2 text-[11px] uppercase tracking-[0.3em] text-teal-200/90">
+            <span className="font-mono2 text-[11px] uppercase tracking-[0.3em] text-amber-300/90">
               Open to opportunities
             </span>
           </motion.div>
@@ -78,7 +78,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="font-display mt-7 text-[13vw] font-bold leading-[0.95] tracking-[-0.03em] sm:text-7xl md:text-8xl"
           >
-            <span className="block text-slate-100">BHASKAR</span>
+            <span className="block text-stone-100">BHASKAR</span>
             <span className="text-gradient block">PAL</span>
           </motion.h1>
 
@@ -86,10 +86,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg"
+            className="mt-6 max-w-xl text-base leading-relaxed text-stone-400 sm:text-lg"
           >
             I turn raw numbers into{" "}
-            <span className="text-slate-100">growth catalysts</span> — crafting
+            <span className="text-stone-100">growth catalysts</span> — crafting
             dashboards, mining insights, and building ML that answers the questions
             leaders actually ask.
           </motion.p>
@@ -98,10 +98,10 @@ export default function Home() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-4 font-mono2 text-sm text-slate-500"
+            className="mt-4 font-mono2 text-sm text-stone-500"
           >
-            <span className="text-teal-300">&gt;</span>{" "}
-            <span className="type-caret text-slate-300">{role}</span>
+            <span className="text-amber-400">&gt;</span>{" "}
+            <span className="type-caret text-stone-300">{role}</span>
           </motion.div>
 
           <motion.div
@@ -113,23 +113,23 @@ export default function Home() {
             <Magnetic>
               <Link
                 to="/projects"
-                className="btn-neon group inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-teal-200 transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(94,234,212,0.4)]"
+                className="btn-neon group inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-amber-300 transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(94,234,212,0.4)]"
               >
                 Explore my work
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:transtone-x-1" />
               </Link>
             </Magnetic>
             <Magnetic>
               <Link
                 to="/contact"
-                className="glass glass-hover inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-slate-200"
+                className="glass glass-hover inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-stone-200"
               >
-                <Sparkles className="h-4 w-4 text-indigo-300" />
+                <Sparkles className="h-4 w-4 text-rose-300" />
                 Let's connect
               </Link>
             </Magnetic>
-            <span className="flex items-center gap-2 font-mono2 text-xs tracking-widest text-slate-500">
-              <MapPin className="h-3.5 w-3.5 text-teal-300/70" />
+            <span className="flex items-center gap-2 font-mono2 text-xs tracking-widest text-stone-500">
+              <MapPin className="h-3.5 w-3.5 text-amber-400/70" />
               KOLKATA · IN
             </span>
           </motion.div>
@@ -140,13 +140,13 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="pointer-events-none absolute bottom-8 left-1/2 -transtone-x-1/2"
         >
-          <div className="flex h-10 w-6 items-start justify-center rounded-full border border-slate-600/60 p-1.5">
+          <div className="flex h-10 w-6 items-start justify-center rounded-full border border-stone-600/60 p-1.5">
             <motion.span
               animate={{ y: [0, 14, 0], opacity: [1, 0.2, 1] }}
               transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-              className="h-2 w-1 rounded-full bg-teal-300"
+              className="h-2 w-1 rounded-full bg-amber-400"
             />
           </div>
         </motion.div>
@@ -167,7 +167,7 @@ export default function Home() {
                 <div className="font-display text-4xl font-bold text-gradient stat-glow sm:text-5xl">
                   {s.value}
                 </div>
-                <div className="mt-2 font-mono2 text-[11px] uppercase tracking-[0.22em] text-slate-500">
+                <div className="mt-2 font-mono2 text-[11px] uppercase tracking-[0.22em] text-stone-500">
                   {s.label}
                 </div>
               </div>
@@ -193,15 +193,15 @@ export default function Home() {
               <TiltCard className="h-full">
                 <div className="glass glass-hover h-full rounded-2xl p-6">
                   <div className="flex items-start justify-between">
-                    <span className="font-mono2 text-2xl text-teal-300/90">{p.glyph}</span>
-                    <span className="font-mono2 text-[10px] tracking-[0.3em] text-slate-600">
+                    <span className="font-mono2 text-2xl text-amber-400/90">{p.glyph}</span>
+                    <span className="font-mono2 text-[10px] tracking-[0.3em] text-stone-600">
                       0{i + 1}
                     </span>
                   </div>
-                  <h3 className="font-display mt-5 text-lg font-semibold text-slate-100">
+                  <h3 className="font-display mt-5 text-lg font-semibold text-stone-100">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-400">{p.body}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-stone-400">{p.body}</p>
                 </div>
               </TiltCard>
             </Reveal>
@@ -209,14 +209,14 @@ export default function Home() {
           <Reveal delay={0.35}>
             <Link
               to="/about"
-              className="group flex h-full min-h-[10rem] flex-col justify-between rounded-2xl border border-dashed border-teal-300/30 bg-teal-300/[0.04] p-6 transition-colors duration-300 hover:border-teal-300/60 hover:bg-teal-300/[0.08]"
+              className="group flex h-full min-h-[10rem] flex-col justify-between rounded-2xl border border-dashed border-amber-400/30 bg-amber-400/[0.04] p-6 transition-colors duration-300 hover:border-amber-400/60 hover:bg-amber-400/[0.08]"
             >
-              <p className="font-display text-lg font-semibold text-teal-200">
+              <p className="font-display text-lg font-semibold text-amber-300">
                 More about the journey
               </p>
-              <span className="mt-4 inline-flex items-center gap-2 font-mono2 text-xs tracking-widest text-teal-300/80">
+              <span className="mt-4 inline-flex items-center gap-2 font-mono2 text-xs tracking-widest text-amber-400/80">
                 GO TO ABOUT
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-transtone-y-0.5 group-hover:transtone-x-0.5" />
               </span>
             </Link>
           </Reveal>
@@ -238,10 +238,10 @@ export default function Home() {
           <Reveal delay={0.15}>
             <Link
               to="/projects"
-              className="group inline-flex items-center gap-2 font-mono2 text-xs tracking-[0.25em] text-teal-300/90 transition-colors hover:text-teal-200"
+              className="group inline-flex items-center gap-2 font-mono2 text-xs tracking-[0.25em] text-amber-400/90 transition-colors hover:text-amber-300"
             >
               VIEW ALL PROJECTS
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:transtone-x-1" />
             </Link>
           </Reveal>
         </div>
@@ -253,15 +253,15 @@ export default function Home() {
                 <TiltCard className="h-full">
                   <article className="glass glass-hover flex h-full flex-col rounded-2xl p-6">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono2 text-[10px] uppercase tracking-[0.3em] text-indigo-300/80">
+                      <span className="font-mono2 text-[10px] uppercase tracking-[0.3em] text-rose-300/80">
                         {p.category}
                       </span>
-                      <ExternalLink className="h-4 w-4 text-slate-600 transition-colors group-hover:text-teal-300" />
+                      <ExternalLink className="h-4 w-4 text-stone-600 transition-colors group-hover:text-amber-400" />
                     </div>
-                    <h3 className="font-display mt-6 text-xl font-semibold leading-snug text-slate-100">
+                    <h3 className="font-display mt-6 text-xl font-semibold leading-snug text-stone-100">
                       {p.title}
                     </h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-stone-400">
                       {p.description}
                     </p>
                     <div className="mt-5 flex flex-wrap gap-2">
@@ -287,14 +287,14 @@ export default function Home() {
                   className="glass glass-hover flex items-center justify-between rounded-2xl px-5 py-4"
                 >
                   <div>
-                    <div className="font-display text-sm font-semibold text-slate-200">
+                    <div className="font-display text-sm font-semibold text-stone-200">
                       {p.title}
                     </div>
-                    <div className="mt-1 font-mono2 text-[10px] uppercase tracking-[0.25em] text-slate-500">
+                    <div className="mt-1 font-mono2 text-[10px] uppercase tracking-[0.25em] text-stone-500">
                       {p.category} · {p.year}
                     </div>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-slate-500 transition-colors hover:text-teal-300" />
+                  <ArrowUpRight className="h-4 w-4 text-stone-500 transition-colors hover:text-amber-400" />
                 </a>
               </Reveal>
             ))}
@@ -305,14 +305,14 @@ export default function Home() {
       {/* ────────────────────────── CTA STRIP ────────────────────────── */}
       <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
         <Reveal>
-          <div className="noise relative overflow-hidden rounded-3xl border border-teal-300/20 bg-gradient-to-br from-teal-300/[0.08] via-transparent to-indigo-400/[0.08] p-10 text-center sm:p-16">
-            <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-teal-300/90">
+          <div className="noise relative overflow-hidden rounded-3xl border border-amber-400/20 bg-gradient-to-br from-amber-400/[0.08] via-transparent to-rose-400/[0.08] p-10 text-center sm:p-16">
+            <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-amber-400/90">
               03 — Contact
             </p>
-            <h2 className="font-display mx-auto mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-slate-100 sm:text-5xl">
+            <h2 className="font-display mx-auto mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-stone-100 sm:text-5xl">
               Have data? <span className="text-gradient">Let's make it talk.</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-sm text-slate-400 sm:text-base">
+            <p className="mx-auto mt-4 max-w-xl text-sm text-stone-400 sm:text-base">
               Ready to connect and discuss collaboration, career opportunities, or
               data-driven projects.
             </p>
@@ -320,7 +320,7 @@ export default function Home() {
               <Magnetic>
                 <Link
                   to="/contact"
-                  className="btn-neon inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-teal-200"
+                  className="btn-neon inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-amber-300"
                 >
                   Get in touch
                   <ArrowRight className="h-4 w-4" />
@@ -328,7 +328,7 @@ export default function Home() {
               </Magnetic>
               <a
                 href={`mailto:${profile.email}`}
-                className="glass glass-hover inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-slate-200"
+                className="glass glass-hover inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-stone-200"
               >
                 {profile.email}
               </a>

@@ -37,7 +37,7 @@ export default function Projects() {
       </section>
 
       {/* filter bar */}
-      <section className="sticky top-16 z-30 mt-10 bg-[#05060a]/70 backdrop-blur-xl">
+      <section className="sticky top-16 z-30 mt-10 bg-[#0b0a08]/70 backdrop-blur-xl">
         <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6">
           <div className="flex flex-wrap gap-2">
             {categories.map((c) => {
@@ -47,13 +47,13 @@ export default function Projects() {
                   key={c}
                   onClick={() => setActive(c)}
                   className={`relative rounded-full px-4 py-2 font-mono2 text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ${
-                    isActive ? "text-[#05060a]" : "text-slate-400 hover:text-slate-100"
+                    isActive ? "text-[#1c1408]" : "text-stone-400 hover:text-stone-100"
                   }`}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="filter-pill"
-                      className="absolute inset-0 rounded-full bg-teal-300"
+                      className="absolute inset-0 rounded-full bg-amber-400"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -88,18 +88,18 @@ export default function Projects() {
                   <TiltCard className="h-full">
                     <article className="glass glass-hover flex h-full flex-col rounded-2xl p-6">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono2 text-[10px] uppercase tracking-[0.3em] text-indigo-300/80">
+                        <span className="font-mono2 text-[10px] uppercase tracking-[0.3em] text-rose-300/80">
                           {p.category}
                         </span>
-                        <span className="flex items-center gap-2 font-mono2 text-[10px] tracking-[0.2em] text-slate-500">
+                        <span className="flex items-center gap-2 font-mono2 text-[10px] tracking-[0.2em] text-stone-500">
                           {p.year}
-                          <ExternalLink className="h-3.5 w-3.5 transition-colors group-hover:text-teal-300" />
+                          <ExternalLink className="h-3.5 w-3.5 transition-colors group-hover:text-amber-400" />
                         </span>
                       </div>
-                      <h3 className="font-display mt-6 text-xl font-semibold leading-snug text-slate-100">
+                      <h3 className="font-display mt-6 text-xl font-semibold leading-snug text-stone-100">
                         {p.title}
                       </h3>
-                      <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-400">
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-stone-400">
                         {p.description}
                       </p>
                       <div className="mt-5 flex flex-wrap gap-2">

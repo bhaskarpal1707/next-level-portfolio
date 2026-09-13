@@ -25,9 +25,9 @@ export default function About() {
       <section className="mx-auto mt-14 grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.15fr_0.85fr]">
         <Reveal>
           <div className="glass noise relative overflow-hidden rounded-3xl p-8 sm:p-10">
-            <Quote className="absolute right-6 top-6 h-8 w-8 text-teal-300/20" />
-            <p className="text-lg leading-relaxed text-slate-300">{profile.about}</p>
-            <p className="mt-6 text-base leading-relaxed text-slate-400">
+            <Quote className="absolute right-6 top-6 h-8 w-8 text-amber-400/20" />
+            <p className="text-lg leading-relaxed text-stone-300">{profile.about}</p>
+            <p className="mt-6 text-base leading-relaxed text-stone-400">
               My passion? Turning chaos into clarity — so leaders can act with
               confidence. Every dataset has a story; my job is to make it impossible
               to ignore.
@@ -49,13 +49,13 @@ export default function About() {
                 className="absolute inset-0 h-full w-full object-cover opacity-90"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#05060a] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0b0a08] via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5 right-5">
                 <div className="glass rounded-2xl px-5 py-4">
-                  <div className="font-display text-lg font-semibold text-slate-100">
+                  <div className="font-display text-lg font-semibold text-stone-100">
                     {profile.name}
                   </div>
-                  <div className="mt-1 font-mono2 text-[11px] uppercase tracking-[0.28em] text-teal-300/80">
+                  <div className="mt-1 font-mono2 text-[11px] uppercase tracking-[0.28em] text-amber-400/80">
                     {profile.location}
                   </div>
                 </div>
@@ -73,11 +73,11 @@ export default function About() {
             <Reveal key={p.title} delay={i * 0.07}>
               <TiltCard className="h-full">
                 <div className="glass glass-hover h-full rounded-2xl p-6">
-                  <span className="font-mono2 text-2xl text-teal-300/90">{p.glyph}</span>
-                  <h3 className="font-display mt-4 text-lg font-semibold text-slate-100">
+                  <span className="font-mono2 text-2xl text-amber-400/90">{p.glyph}</span>
+                  <h3 className="font-display mt-4 text-lg font-semibold text-stone-100">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-400">{p.body}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-stone-400">{p.body}</p>
                 </div>
               </TiltCard>
             </Reveal>
@@ -101,10 +101,10 @@ export default function About() {
                 className="glass glass-hover h-full rounded-2xl p-6"
               >
                 <div className="flex items-center gap-3">
-                  <span className="font-mono2 text-[10px] tracking-[0.3em] text-indigo-300/70">
+                  <span className="font-mono2 text-[10px] tracking-[0.3em] text-rose-300/70">
                     {String(gi + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-display text-base font-semibold text-slate-100">
+                  <h3 className="font-display text-base font-semibold text-stone-100">
                     {g.title}
                   </h3>
                 </div>
@@ -124,17 +124,17 @@ export default function About() {
         <Reveal>
           <Link
             to="/experience"
-            className="group flex items-center justify-between rounded-3xl border border-white/8 bg-white/[0.02] px-8 py-8 transition-colors duration-300 hover:border-teal-300/40 hover:bg-teal-300/[0.04]"
+            className="group flex items-center justify-between rounded-3xl border border-white/8 bg-white/[0.02] px-8 py-8 transition-colors duration-300 hover:border-amber-400/40 hover:bg-amber-400/[0.04]"
           >
             <div>
-              <p className="font-mono2 text-[11px] uppercase tracking-[0.3em] text-slate-500">
+              <p className="font-mono2 text-[11px] uppercase tracking-[0.3em] text-stone-500">
                 Next up
               </p>
-              <p className="font-display mt-2 text-2xl font-semibold text-slate-100 sm:text-3xl">
+              <p className="font-display mt-2 text-2xl font-semibold text-stone-100 sm:text-3xl">
                 Experience <span className="text-gradient">timeline</span>
               </p>
             </div>
-            <ArrowRight className="h-6 w-6 text-teal-300 transition-transform duration-300 group-hover:translate-x-2" />
+            <ArrowRight className="h-6 w-6 text-amber-400 transition-transform duration-300 group-hover:transtone-x-2" />
           </Link>
         </Reveal>
       </section>

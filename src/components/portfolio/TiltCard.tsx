@@ -52,7 +52,7 @@ export default function TiltCard({
         className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] transition-opacity duration-300"
         style={{
           opacity: sheen.o,
-          background: `radial-gradient(420px circle at ${sheen.x}% ${sheen.y}%, rgba(94,234,212,0.12), transparent 42%)`,
+          background: `radial-gradient(420px circle at ${sheen.x}% ${sheen.y}%, rgba(251,191,36,0.14), transparent 42%)`,
         }}
       />
       {children}

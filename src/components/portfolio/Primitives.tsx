@@ -41,11 +41,11 @@ export function SectionHeading({
       <div
         className={`flex items-center gap-3 ${align === "center" ? "justify-center" : ""}`}
       >
-        <span className="h-px w-8 bg-gradient-to-r from-teal-300/80 to-transparent" />
-        <span className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-teal-300/90">
+        <span className="h-px w-8 bg-gradient-to-r from-amber-400/80 to-transparent" />
+        <span className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-amber-400/90">
           {eyebrow}
         </span>
-        <span className="h-px w-8 bg-gradient-to-l from-teal-300/80 to-transparent" />
+        <span className="h-px w-8 bg-gradient-to-l from-amber-400/80 to-transparent" />
       </div>
       <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
         {title}
@@ -65,7 +65,7 @@ export function SectionHeading({
 
 export function TagChip({ children }: { children: ReactNode }) {
   return (
-    <span className="glass inline-flex items-center rounded-full px-3 py-1 font-mono2 text-[11px] tracking-wide text-slate-300">
+    <span className="glass inline-flex items-center rounded-full px-3 py-1 font-mono2 text-[11px] tracking-wide text-stone-300">
       {children}
     </span>
   );

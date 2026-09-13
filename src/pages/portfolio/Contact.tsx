@@ -55,37 +55,37 @@ export default function Contact() {
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
                 className="glass glass-hover noise group relative block h-full overflow-hidden rounded-2xl p-7"
               >
-                <span className="grid h-11 w-11 place-items-center rounded-xl border border-teal-300/30 bg-teal-300/10 text-teal-200 transition-shadow duration-300 group-hover:shadow-[0_0_24px_rgba(94,234,212,0.35)]">
+                <span className="grid h-11 w-11 place-items-center rounded-xl border border-amber-400/30 bg-amber-400/10 text-amber-300 transition-shadow duration-300 group-hover:shadow-[0_0_24px_rgba(94,234,212,0.35)]">
                   <c.icon className="h-5 w-5" />
                 </span>
-                <p className="mt-6 font-mono2 text-[10px] uppercase tracking-[0.3em] text-slate-500">
+                <p className="mt-6 font-mono2 text-[10px] uppercase tracking-[0.3em] text-stone-500">
                   {c.label}
                 </p>
-                <p className="font-display mt-2 break-words text-lg font-semibold text-slate-100">
+                <p className="font-display mt-2 break-words text-lg font-semibold text-stone-100">
                   {c.value}
                 </p>
-                <p className="mt-1.5 font-mono2 text-[11px] tracking-wide text-slate-500">
+                <p className="mt-1.5 font-mono2 text-[11px] tracking-wide text-stone-500">
                   {c.sub}
                 </p>
-                <ArrowUpRight className="absolute right-6 top-7 h-4 w-4 text-slate-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-teal-300" />
+                <ArrowUpRight className="absolute right-6 top-7 h-4 w-4 text-stone-600 transition-all duration-300 group-hover:-transtone-y-0.5 group-hover:transtone-x-0.5 group-hover:text-amber-400" />
               </motion.a>
             </Reveal>
           ))}
         </div>
 
         <Reveal delay={0.2}>
-          <div className="noise relative mt-6 overflow-hidden rounded-3xl border border-teal-300/20 bg-gradient-to-br from-teal-300/[0.07] via-transparent to-indigo-400/[0.07] p-8 text-center sm:p-12">
-            <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-teal-300/90">
+          <div className="noise relative mt-6 overflow-hidden rounded-3xl border border-amber-400/20 bg-gradient-to-br from-amber-400/[0.07] via-transparent to-rose-400/[0.07] p-8 text-center sm:p-12">
+            <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-amber-400/90">
               Direct line
             </p>
-            <h3 className="font-display mx-auto mt-4 max-w-xl text-2xl font-semibold tracking-tight text-slate-100 sm:text-4xl">
+            <h3 className="font-display mx-auto mt-4 max-w-xl text-2xl font-semibold tracking-tight text-stone-100 sm:text-4xl">
               One email away from <span className="text-gradient">better decisions</span>
             </h3>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Magnetic>
                 <a
                   href={`mailto:${profile.email}`}
-                  className="btn-neon inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-teal-200 transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(94,234,212,0.4)]"
+                  className="btn-neon inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-display text-sm font-semibold text-amber-300 transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(94,234,212,0.4)]"
                 >
                   <Mail className="h-4 w-4" />
                   Write me now
@@ -95,7 +95,7 @@ export default function Contact() {
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer"
-                className="glass glass-hover inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-slate-200"
+                className="glass glass-hover inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-stone-200"
               >
                 <Github className="h-4 w-4" /> GitHub
               </a>
@@ -103,7 +103,7 @@ export default function Contact() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="glass glass-hover inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-slate-200"
+                className="glass glass-hover inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-stone-200"
               >
                 <Linkedin className="h-4 w-4" /> LinkedIn
               </a>
