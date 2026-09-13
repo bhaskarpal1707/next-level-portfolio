@@ -76,6 +76,8 @@ function ReelStage({
     }
   };
 
+  const isYouTube = !!src && src.includes("youtube.com/embed");
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -99,7 +101,17 @@ function ReelStage({
                 style={{ opacity: glow }}
               />
               <div className="relative aspect-video w-full bg-black">
-                {hasVideo && src ? (
+                {hasVideo && src && isYouTube ? (
+                  /* YouTube intro film — same embed as the old site */
+                  <iframe
+                    src={`${src}${src.includes("?") ? "&" : "?"}autoplay=1&rel=0`}
+                    title="Bhaskar Pal — introduction"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    className="h-full w-full"
+                  />
+                ) : hasVideo && src ? (
                   <>
                     <video
                       ref={videoRef}
@@ -149,7 +161,7 @@ function ReelStage({
 
             {/* stage chrome */}
             <div className="pointer-events-none absolute inset-x-0 bottom-8 flex items-center justify-between px-6 font-mono2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground sm:px-10">
-              <span>BHASKAR PAL — SHOWREEL</span>
+              <span>BHASKAR PAL — INTRO FILM</span>
               <span className="hidden sm:inline">SCROLL TO ZOOM · ESC TO CLOSE</span>
             </div>
           </div>
@@ -230,7 +242,7 @@ export default function VideoShowcase() {
             </span>
           </div>
           <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-5 pb-4 font-mono2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-            <span>REEL.MP4</span>
+            <span>INTRO FILM · YOUTUBE</span>
             <span className="text-grad font-semibold">CLICK TO EXPAND</span>
           </div>
         </div>

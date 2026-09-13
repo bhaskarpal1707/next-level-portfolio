@@ -1,7 +1,8 @@
 /**
  * ─────────────────────────────────────────────────────────────────────────────
  *  PORTFOLIO CONTENT — edit this file to update anything on the site.
- *  All content extracted from bhaskarpal1707.github.io/portfolio + GitHub.
+ *  All links/images below are the EXACT ones from the old portfolio
+ *  (bhaskarpal1707.github.io/portfolio + its Google Sheets data source).
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
@@ -57,7 +58,7 @@ export const profile = {
   name: "Bhaskar Pal",
   firstName: "Bhaskar",
   lastName: "Pal",
-  roles: ["Data Analyst", "Data Strategist", "Insight Architect", "ML Explorer"],
+  roles: ["Aspiring Data Analyst", "BI Developer", "Data Science Enthusiast", "Analytical Thinker", "Data Insights Creator"],
   tagline: "Turning raw numbers into growth catalysts.",
   headline: "Data Strategist | Insight Architect | Turning Raw Numbers into Growth Catalysts",
   about:
@@ -69,10 +70,13 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
   avatar: portraitImg,
   aboutImage: aboutImg,
-  resume: "/resume.pdf",
-  /** Leave "" to auto-probe: /video.mp4 in `public/`, then the old portfolio's
-   *  video paths. Or set an absolute URL to your reel here. */
-  videoUrl: "",
+  /** Resume — the same Google Drive file the old site links. */
+  resume: "https://drive.google.com/file/d/1rqjdT888oIsz3DiDzslP8XZMfqAkaYbF/view?usp=sharing",
+  /** Intro video — same YouTube embed the old site opens from About. */
+  videoUrl: "https://www.youtube.com/embed/qsH_QY-3SuY",
+  /** Google Apps Script endpoint the old contact form posts to. */
+  formEndpoint:
+    "https://script.google.com/macros/s/AKfycbwTsBgV7aN8eO0XNhnBjEtWY8skoHvcQjsYQP5ParGwPtW0kDBJdBoda9cT4MmURBFnZQ/exec",
 };
 
 /** Social handles shown in the hero, footer and contact CTA. */
@@ -98,15 +102,15 @@ export const socials: Social[] = [
   },
   {
     label: "Facebook",
-    url: "https://www.facebook.com/bhaskarpal1707",
+    url: "https://www.facebook.com/bhaskar.pal.120885",
     icon: "facebook",
-    handle: "bhaskarpal1707",
+    handle: "bhaskar.pal.120885",
   },
   {
     label: "X (Twitter)",
-    url: "https://x.com/bhaskarpal1707",
+    url: "https://x.com/bhaskarpal_1707?t=mLQH8LZpYDWf80woUswk6g&s=09",
     icon: "x",
-    handle: "@bhaskarpal1707",
+    handle: "@bhaskarpal_1707",
   },
   {
     label: "Hugging Face",
@@ -171,7 +175,7 @@ export type Experience = {
 export const experiences: Experience[] = [
   {
     role: "Research Intern",
-    period: "Apr 2026 — Present",
+    period: "Apr, 2026 — Present",
     org: "Indian Statistical Institute, Kolkata",
     orgUrl: "https://www.isical.ac.in/",
     points: [
@@ -186,7 +190,7 @@ export const experiences: Experience[] = [
   },
   {
     role: "Trainee Intern (Software Development)",
-    period: "Jan 2026 — Mar 2026",
+    period: "Jan, 2026 — Mar, 2026",
     org: "IDEAS Technology Innovation Hub @ Indian Statistical Institute, Kolkata",
     orgUrl: "https://www.ideas-tih.org/",
     points: [
@@ -203,7 +207,7 @@ export const experiences: Experience[] = [
   },
   {
     role: "Trainee Intern",
-    period: "Nov 2025 — Dec 2025",
+    period: "Nov, 2025 — Dec, 2025",
     org: "Indian Statistical Institute, Kolkata",
     orgUrl: "https://www.isical.ac.in/",
     points: [
@@ -222,7 +226,7 @@ export const experiences: Experience[] = [
 
 /* ───────────────────────────── SKILLS ─────────────────────────────
  * Logos resolve through <SkillLogo/> (Devicon components + hand-drawn
- * with hand-drawn brand marks for logos no longer in the icon sets).
+ * brand marks for logos no longer in the icon sets).
  * Headings are copied verbatim from the old portfolio.
  * ─────────────────────────────────────────────────────────────────── */
 
@@ -258,7 +262,7 @@ export const skillGroups: { title: string; skills: Skill[] }[] = [
     ],
   },
   {
-    title: "Statistical & Machine Learning",
+    title: "Statistical & Machine Learning Techniques",
     skills: [
       { name: "Supervised Learning", logo: "supervised" },
       { name: "Unsupervised Learning", logo: "unsupervised" },
@@ -346,9 +350,11 @@ export const education: Education[] = [
 ];
 
 /* ──────────────────────────── PROJECTS ────────────────────────────
- * Tags mirror the old portfolio's filter tabs (All / End to End /
- * Excel / Power BI / SQL / Python). linkedinUrl defaults to the
- * LinkedIn profile — paste per-project post URLs any time.
+ * All 37 rows copied verbatim from the old portfolio's Google Sheet —
+ * exact titles, subtitles, images, GitHub and LinkedIn links. Tags use
+ * the sheet's own keywords (End To End / Excel / Power BI / Tableau /
+ * SQL / Python / Machine Learning) so the filter tabs match the old
+ * site one-to-one.
  * ─────────────────────────────────────────────────────────────────── */
 
 export type Project = {
@@ -363,339 +369,581 @@ export type Project = {
   featured?: boolean;
 };
 
-export const projectTags = ["All", "End to End", "Excel", "Power BI", "SQL", "Python"];
+export const projectTags = [
+  "All",
+  "End To End",
+  "Excel",
+  "Power BI",
+  "Tableau",
+  "SQL",
+  "Python",
+  "Machine Learning",
+];
 
 const LI = "https://www.linkedin.com/in/bhaskar-pal-2k02/";
 
 const P = (
   title: string,
-  tags: string[],
-  year: string,
-  tech: string[],
   description: string,
-  repo: string,
+  image: string,
+  tech: string[],
+  keywords: string,
+  githubUrl: string,
+  linkedinUrl: string,
   featured = false,
 ): Project => ({
   title,
-  tags,
-  year,
+  tags: keywords
+    .split(",")
+    .map((k) => k.trim())
+    .filter(Boolean),
+  year: "",
   tech,
   description,
-  githubUrl: `https://github.com/bhaskarpal1707/${repo}`,
-  linkedinUrl: LI,
-  image: `https://opengraph.githubassets.com/1/bhaskarpal1707/${repo}`,
+  githubUrl,
+  linkedinUrl: linkedinUrl || LI,
+  image: image.startsWith("https://github.com/") ? repoOgImage(image) : image,
   featured,
 });
 
 export const projects: Project[] = [
   P(
-    "BanglaVLM",
-    ["Python", "End to End"],
-    "2026",
-    ["PyTorch", "VLM", "Fine-tuning", "Bangla NLP"],
-    "Fine-tuning vision-language models for Bengali — building low-resource multimodal understanding for one of the world's most under-served language communities.",
-    "BanglaVLM",
+    "Vendor Performance Analysis – Retail Inventory & Sales",
+    "Analyzing vendor efficiency and profitability to drive data-informed purchasing, pricing, and inventory decisions using SQL, Python, and Power BI.",
+    "https://lh3.googleusercontent.com/d/1x-Mg6GJz-z-yAyqHDeckYlNmqA-bB9jv",
+    ["Python", "SQL", "Power BI", "Jupyter Notebook"],
+    "End To End, Power BI",
+    "https://github.com/bhaskarpal1707/vendor-performance-analysis-sql-python-powerbi",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_vendor-performance-analysis-report-activity-7358839896146407426-nANX?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
     true,
   ),
   P(
-    "PhonePe Transaction Analysis",
-    ["Power BI", "Excel"],
-    "2026",
-    ["Power BI", "DAX", "Excel"],
-    "Interactive Power BI dashboard analyzing PhonePe transaction trends across India — volume, category mix, and state-level growth patterns at a glance.",
-    "phonepe-analysis-powerbi",
+    "Walmart Sales Data Analysis",
+    "Unveiling Key Sales Insights Through Data-Driven Analysis",
+    "https://lh3.googleusercontent.com/d/1jV782qoL4JaI1eX8B1W9Vsp-lcJXc8W_",
+    ["MySQL Workbench", "Python"],
+    "End To End",
+    "https://github.com/bhaskarpal1707/Walmart_Sales_Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_walmart-sales-data-analysis-activity-7312942147429666816-KYE6?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
     true,
   ),
   P(
-    "Customer Churn Analysis",
-    ["Python", "End to End"],
-    "2026",
-    ["Python", "scikit-learn", "Pandas", "Seaborn"],
-    "End-to-end churn prediction pipeline — EDA, feature engineering, and model evaluation to surface the retention levers that matter most.",
-    "customers-churn-analysis-python",
+    "Comprehensive Banking Risk Analysis",
+    "This project focuses on banking risk analytics to enable smarter lending decisions and minimize financial losses.",
+    "https://lh3.googleusercontent.com/d/1Qf43c2ODt2xK6E3jBQPbX16Quh9MgQDb",
+    ["Python", "SQL", "MySQL", "MS Excel", "Power BI", "Jupyter Notebook"],
+    "End To End, Power BI",
+    "https://github.com/bhaskarpal1707/bhaskarpal1707-Banking-Risk-Insights-Project",
+    "https://www.linkedin.com/feed/update/urn:li:activity:7332306636587393024?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
     true,
   ),
   P(
-    "Vendor Performance Analysis",
-    ["SQL", "Python", "End to End"],
-    "2025",
-    ["SQL", "Python", "Power BI", "Pandas"],
-    "Full-stack retail analytics: SQL pipelines for ingestion, Python for profit-margin and inventory-turn analysis, and a Power BI layer for vendor scorecards.",
-    "vendor-performance-analysis-sql-python-powerbi",
+    "Comprehensive Loan Analytics",
+    "This project uses Python, SQL, and Power BI to analyze loan applicant data—assessing financial risk, detecting fraud, and uncovering trends—delivering a dashboard for informed lending decisions.",
+    "https://lh3.googleusercontent.com/d/1gh_cLzqjMDECVgR2GNuh4lHiwUjTikBA",
+    ["Python", "SQL", "MySQL", "MS Excel", "Power BI", "Jupyter Notebook"],
+    "End To End, Power BI",
+    "https://github.com/bhaskarpal1707/Comprehensive_Loan_Analytics_Dashboard-Power-BI",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_comprehensive-loan-analytics-dashboard-activity-7342122530700214272-l5n9?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
     true,
   ),
   P(
-    "Blinkit Sales Analysis",
-    ["SQL"],
-    "2025",
-    ["MySQL", "SQL", "Workbench"],
-    "Comprehensive SQL analysis of Blinkit's sales performance, customer satisfaction, and inventory distribution — Total Sales, Avg Sales, Item Count and Avg Rating KPIs.",
-    "Blinkit-Analysis-SQL-Project",
+    "Mind Metrics",
+    "A machine learning system that uses survey data to detect and predict depression, anxiety, and stress in university students, enabling early, scalable interventions with Python and open-source tools.",
+    "https://lh3.googleusercontent.com/d/1UJkAMB8g3GwlcKRDadDVahdjwgKFOHcx",
+    ["Python", "Machine Learning"],
+    "Machine Learning",
+    "https://github.com/bhaskarpal1707/Mind-Metrics",
+    "",
     true,
-  ),
-  P(
-    "Spotify Dashboard — Power BI",
-    ["Power BI"],
-    "2025",
-    ["Power BI", "DAX", "Data Modeling"],
-    "A music intelligence dashboard: streams, artists, and listening trends rendered as an interactive Power BI experience.",
-    "spotify-analysis-dashboard-powerbi",
-    true,
-  ),
-  P(
-    "BanglaSum — Qwen3 · XLSum",
-    ["Python", "End to End"],
-    "2026",
-    ["Qwen3", "LLM", "Fine-tuning", "Summarization"],
-    "Adapting Qwen3 for Bengali abstractive summarization on XLSum — dataset curation, LoRA fine-tuning and ROUGE-driven evaluation.",
-    "BanglaSum-Qwen3-XLSum",
-  ),
-  P(
-    "LaTeX OCR — Qwen3.5 Fine-tune",
-    ["Python"],
-    "2026",
-    ["Qwen3.5", "OCR", "Vision", "LaTeX"],
-    "Fine-tuning a multimodal LLM to read rendered math and emit clean LaTeX — an experiment in precise, structured visual transcription.",
-    "qwen3.5-latex-ocr-finetune-v2",
-  ),
-  P(
-    "Language Detection App",
-    ["Python"],
-    "2026",
-    ["Python", "Naive Bayes", "Streamlit", "NLP"],
-    "A Streamlit web app that classifies text across languages using CountVectorizer + Naive Bayes — deployed for instant, interactive inference.",
-    "Language-Detection-App",
-  ),
-  P(
-    "E-commerce Funnel Analysis",
-    ["Python"],
-    "2026",
-    ["Python", "Pandas", "Plotly"],
-    "Tracing users from visit to purchase — funnel drop-off analysis that quantifies where conversion leaks and what to fix first.",
-    "e-commerce-funnel-analysis",
-  ),
-  P(
-    "Banking Churn & Risk Analysis",
-    ["Excel", "Power BI"],
-    "2025",
-    ["Excel", "Power BI", "Risk Analytics"],
-    "Banking customer churn and credit-risk analysis blending Excel modeling with Power BI storytelling for account-retention strategy.",
-    "banking-customers-churn-and-risk-analysis-excel-powerbi",
-  ),
-  P(
-    "Airbnb Data Analysis",
-    ["Python", "End to End"],
-    "2025",
-    ["Python", "Pandas", "NumPy", "Visualization"],
-    "Exploratory analysis of Airbnb listings — pricing dynamics, availability patterns, and location-driven demand insights.",
-    "Airbnb-Data-Analysis-Project-",
-  ),
-  P(
-    "Online Courses Analysis",
-    ["Power BI"],
-    "2025",
-    ["Power BI", "Excel"],
-    "Market analysis of online learning platforms — enrollment trends, pricing tiers, and category performance in a multi-page dashboard.",
-    "online-courses-analysis-powerbi",
-  ),
-  P(
-    "Hospital ER Analysis",
-    ["Excel"],
-    "2025",
-    ["Excel", "Dashboards", "Pivot Tables"],
-    "Emergency-room operations dashboard in advanced Excel — patient flow, wait times, and admission patterns for capacity decisions.",
-    "Hospital-Emergency-Room-Analysis-Using_Excel",
-  ),
-  P(
-    "Spotify Data Analysis — SQL",
-    ["SQL"],
-    "2025",
-    ["PostgreSQL", "SQL", "Window Functions"],
-    "Query-driven analysis of a Spotify dataset — advanced joins, CTEs, and window functions to rank artists, tracks, and engagement.",
-    "Spotify-Data-Analysis-using-SQL",
-  ),
-  P(
-    "Zepto Inventory Analysis",
-    ["SQL"],
-    "2025",
-    ["MySQL", "SQL", "Data Cleaning"],
-    "Rapid-fire SQL exploration of Zepto's quick-commerce catalog — pricing outliers, discount structure, and inventory signals.",
-    "Zepto-Analysis-SQL-Project",
-  ),
-  P(
-    "Walmart Sales Analysis",
-    ["SQL", "Python"],
-    "2025",
-    ["Python", "Pandas", "SQL"],
-    "Holiday-vs-weekday sales patterns across branches — feature engineering plus SQL checks to explain revenue swings.",
-    "Walmart_Sales_Analysis",
-  ),
-  P(
-    "Boston House Price Prediction",
-    ["Python"],
-    "2025",
-    ["scikit-learn", "Regression", "Python"],
-    "Classic regression benchmark rebuilt properly — EDA, correlation pruning, and regularized models with honest evaluation.",
-    "boston-house-pricing-prediction-analysis",
-  ),
-  P(
-    "Churn Insights — Telecom",
-    ["Python"],
-    "2025",
-    ["Python", "EDA", "Classification"],
-    "Identified churn drivers: month-to-month contracts (42% churn), electronic checks (45%), first-year customers (50%) — analysis turned into retention actions.",
-    "Customer-Churn-Analysis",
   ),
   P(
     "Uber Data Analysis",
-    ["Python"],
-    "2025",
-    ["Python", "Pandas", "Folium"],
-    "Ride-request exploration — hourly demand heat, peak-day patterns, and geographic pickup distributions visualized on maps.",
-    "Uber-Data-Analysis",
+    "Insights from Data Exploration",
+    "https://lh3.googleusercontent.com/d/1rb8X7jl4dRB3Rc5_JJDXzFfK8IiRQIAW",
+    ["Jupyter Notebook", "Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/Uber-Data-Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_uber-data-analysis-project-activity-7304410654944178176-Fu0c?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
   ),
   P(
     "Road Accident Analysis",
+    "Data Cleaning, Processing, Analysis & Visualization",
+    "https://lh3.googleusercontent.com/d/18IoBeCgtVbBWri7IzGVJOZjLTed0hlEo",
     ["Excel"],
-    "2025",
-    ["Excel", "Dashboarding", "Data Cleaning"],
-    "Advanced Excel project covering the full chain — cleaning, processing, and an interactive accident-severity dashboard.",
-    "Road-Accident-Analysis-Excel-",
+    "Excel",
+    "https://github.com/bhaskarpal1707/Road-Accident-Analysis-Excel-",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_excel-dataanalysis-datavisualization-activity-7305467438815485952-oQak?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
   ),
   P(
-    "Google Search Analysis",
+    "Customer Churn Analysis in the Telecom Industry",
+    "Insights for Retention Strategies",
+    "https://lh3.googleusercontent.com/d/16omn2JVMtcs9Qxe9ODDLGMR4yqZNNBGE",
+    ["Jupyter Notebook", "Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/Customer-Churn-Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_customer-churn-analysis-in-the-telecom-industry-activity-7308569451409416192-7Fg8?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Blinkit Analysis Project",
+    "Comprehensive SQL Analysis of Blinkit's Sales, Customer Satisfaction & Inventory",
+    "https://lh3.googleusercontent.com/d/1JxhFwl-HwFkizLh9Xi91rm4RJv6gNbNB",
+    ["MySQL Workbench"],
+    "SQL",
+    "https://github.com/bhaskarpal1707/Blinkit-Analysis-SQL-Project",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_blinkit-analysis-sql-project-activity-7309316361208373248-L_WJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "HR Data Analysis",
+    "Interactive Power BI HR Dashboard: Workforce Attrition, Salary & Job Satisfaction Insights",
+    "https://lh3.googleusercontent.com/d/1wA8OICrhNWeEIeTAkfCqk_e6pXjmT-V7",
+    ["Power BI"],
+    "Power BI",
+    "https://github.com/bhaskarpal1707/Power-BI-Dashboard-Project-HR-Data-Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_powerbi-dataanalytics-hrdataanalysis-activity-7310594501373267968-cKpL?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Airbnb Data Analysis",
+    "Comprehensive Data Insights using Python",
+    "https://lh3.googleusercontent.com/d/13d25Cbu1XUeiE_LtG0DfSo8IszltUE3u",
+    ["Jupyter Notebook", "Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/Airbnb-Data-Analysis-Project-",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_airbnb-data-analysis-project-activity-7310663641274429441-xtkF?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Online Book Store Analysis",
+    "Efficient Data Analysis and Insights Using SQL Queries",
+    "https://lh3.googleusercontent.com/d/1UsQVrZiXnsN4aoy89jcxCWrS0vYvNAcl",
+    ["PostgreSQL"],
+    "SQL",
+    "https://github.com/bhaskarpal1707/Online-Bookstore-Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_online-bookstore-analysis-activity-7311359748447027201-Qt3c?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Indian Weather Data Analysis",
+    "Exploring Real-Time Weather Data to Unveil Patterns and Trends Across Indian Cities",
+    "https://lh3.googleusercontent.com/d/1Ejw-hY_1_GcJG2cnrxZfZN6UHv74Zp0h",
+    ["Jupyter Notebook", "Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/Weather_Data_Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_indian-weather-analysis-activity-7311907665671008256-v1Ni?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Spotify Analysis Project",
+    "Analyzes Spotify music data with advanced SQL—focusing on dataset normalization, efficient querying, and insight extraction.",
+    "https://lh3.googleusercontent.com/d/1VWD--MOh83t23zRlBz5RRQp3WrBPhSS2",
+    ["PostgreSQL"],
+    "SQL",
+    "https://github.com/bhaskarpal1707/Spotify-Data-Analysis-using-SQL",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_spotify-advanced-sql-project-and-query-optimization-activity-7314381363334324225-L2GE?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Hospital Emergency Room Analysis",
+    "An Excel dashboard to visualize ER performance, aiming to streamline operations and support effective hospital decision-making.",
+    "https://lh3.googleusercontent.com/d/1PGUt8FcL1Z3d3fEogMx674WWPI1xf03k",
+    ["Excel"],
+    "Excel",
+    "https://github.com/bhaskarpal1707/Hospital-Emergency-Room-Analysis-Using_Excel",
+    "",
+  ),
+  P(
+    "Startup Success Analysis",
+    "Exploratory data analysis of startup success, leveraging multi-industry data to uncover key growth, funding, and efficiency factors for founders and investors.",
+    "https://lh3.googleusercontent.com/d/1CpunGHV2OXQiFYggxA4SY5F98JHTkZnD",
     ["Python"],
-    "2025",
-    ["Python", "Pytrends", "Visualization"],
-    "Trend mining on Google search interest — comparing query topics over time to read the public's data-science curiosity curve.",
-    "Google-Search-Analysis",
+    "Python",
+    "https://github.com/bhaskarpal1707/Startup-Analysis_Using_Python",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_decoding-startup-success-activity-7324754346452168704-NWWP?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Student Placement Analysis",
+    "Analyzes student placement data to reveal key academic and demographic factors affecting campus placement — insights for educators, counselors, and students.",
+    "https://lh3.googleusercontent.com/d/1UvsQS8n8axOcjNrA2v-Mla2lSocBuUAM",
+    ["Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/Student-Placement-Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_student-placement-analysis-activity-7330195916852731904-IBPI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Netflix Data Analysis",
+    "Uses advanced SQL to analyze Netflix data and uncover insights on content distribution, popularity, and trends.",
+    "https://lh3.googleusercontent.com/d/1SEMDrYYUy532YiMoVvOBAaegSeJfv2th",
+    ["PostgreSQL"],
+    "SQL",
+    "https://github.com/bhaskarpal1707/Netflix-Analysis-SQL-Project",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_netflixanalysissql-activity-7333522049337892866-X8LJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Loan Risk Analysis",
+    "EDA on a loan dataset to improve approval processes by reducing defaults, detecting fraud, and understanding borrower behavior.",
+    "https://lh3.googleusercontent.com/d/16vFARKnHQxE3hkLT8NVe-4mdp0EXPNNa",
+    ["Jupyter Notebook", "Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/Loan-Risk-Analyzer",
+    "https://www.linkedin.com/feed/update/urn:li:activity:7334597801240125442?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Online Retail Analysis",
+    "A Power BI dashboard delivering key insights on online retail sales, customer behavior, product performance, and location data for informed decision-making.",
+    "https://lh3.googleusercontent.com/d/1KFjWOtjzIz_4WayNE4NduDNnQbBR0WYr",
+    ["Power BI"],
+    "Power BI",
+    "https://github.com/bhaskarpal1707/Online-Retail-Insights-Dashboard",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_powerbidashboard-retailanalytics-dataanalyticsproject-activity-7338869530342895617-Brl-?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Aircraft Occupancy Optimization",
+    "Data analysis helping a business-jet operator boost occupancy, optimize pricing, and increase profit per seat amid rising costs and market pressures.",
+    "https://lh3.googleusercontent.com/d/1wsaGm4ji3_fQSMQ9pAyGLy_hGhaZ2HND",
+    ["Jupyter Notebook", "Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/Airlines-Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_airline-analysis-presentation-activity-7339364988496596992-3ycY?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Zepto Analyst Project",
+    "Hands-on SQL analysis of real Zepto inventory data — the full analyst workflow on over 3,700 product listings.",
+    "https://lh3.googleusercontent.com/d/1UiUsstRWiBkvtOJtodnBzmFpmhATl8Xb",
+    ["PostgreSQL"],
+    "SQL",
+    "https://github.com/bhaskarpal1707/Zepto-Analysis-SQL-Project",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_zepto-analysis-sql-project-activity-7344419051131047937-LNOf?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "Diwali Sales Analysis",
+    "Analyzes Diwali sales data to reveal customer trends, product demand, and regional performance for strategic decision-making.",
+    "https://lh3.googleusercontent.com/d/1ShZf6F2o8kNf1SgCryfJX7BmizY47Mi0",
+    ["Python"],
+    "Python",
+    LI,
+    "",
   ),
   P(
     "Website Performance Analysis",
+    "Analyzes website user sessions using Python to uncover insights on traffic, engagement, and optimization for marketing and content strategies.",
+    "https://lh3.googleusercontent.com/d/1Y8p1m_TZxC9IIcvvoKPI7ta6Myw00JDk",
     ["Python"],
-    "2025",
-    ["Python", "Pandas", "Analytics"],
-    "Traffic and engagement audit — session quality, channel performance, and user-behavior signals that inform growth decisions.",
-    "Website-Performance-Analysis",
+    "Python",
+    "https://github.com/bhaskarpal1707/Website-Performance-Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_website-performance-analysis-presentation-activity-7349854975058997248-LBt2?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
   ),
   P(
-    "NeuralCanvas",
-    ["End to End"],
-    "2026",
-    ["HTML", "Canvas", "JavaScript"],
-    "A generative-art playground in the browser — neural-inspired visuals drawn live on HTML canvas.",
-    "NeuralCanvas",
+    "Google Search Analysis",
+    "Uses Python and the Google Trends API to analyze global keyword interest over time and geography with clear visuals and reusable code.",
+    "https://lh3.googleusercontent.com/d/1n9sxAkAsCAenm5PqNl4O2qvziAK2-De6",
+    ["Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/Google-Search-Analysis",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_google-search-analysis-presentation-activity-7350422642845245440-serA?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
   ),
   P(
-    "CmdHub",
-    ["End to End"],
-    "2026",
-    ["JavaScript", "Web App"],
-    "A curated command-hub web utility — quick access to the snippets and commands used most in day-to-day work.",
-    "CmdHub",
+    "Boston House Pricing Prediction Analysis",
+    "The Boston House Prices Dataset from 1978 — 506 entries with 14 features describing homes across Boston suburbs.",
+    "https://lh3.googleusercontent.com/d/1KArtx0zM6sWxd6FDde5LXi8ZvVE9NRXb",
+    ["Machine Learning", "Python"],
+    "Machine Learning",
+    "https://github.com/bhaskarpal1707/boston-house-pricing-prediction-analysis",
+    "",
   ),
   P(
-    "MarkForge",
-    ["End to End"],
-    "2026",
-    ["JavaScript", "Markdown", "Web App"],
-    "A lightweight markdown forge — write, preview, and polish markdown documents in a distraction-free interface.",
-    "MarkForge",
+    "Online Courses Analysis",
+    "Insights-Driven Exploration of the Online Learning Market",
+    "https://github.com/bhaskarpal1707/online-courses-analysis-powerbi",
+    ["Power BI"],
+    "Power BI",
+    "https://github.com/bhaskarpal1707/online-courses-analysis-powerbi",
+    "https://www.linkedin.com/posts/bhaskar-pal-2k02_powerbi-dataanalytics-edtech-activity-7361340814184124416-L4am?utm_source=share&utm_medium=member_desktop&rcm=ACoAADZ3YJ4BC4Dw2J5XglO82x4Wzs6U1-pZ7So",
+  ),
+  P(
+    "YouTube Data Scraper Analysis",
+    "Scraping, Analyzing & Visualizing YouTube Data using the YouTube Data API",
+    "https://github.com/bhaskarpal1707/youtube-data-scraper-analysis-python",
+    ["Python", "YouTube API"],
+    "Python",
+    "https://github.com/bhaskarpal1707/youtube-data-scraper-analysis-python",
+    "https://lnkd.in/p/gQppW3bu",
+  ),
+  P(
+    "Banking Customer Churn & Risk Analysis",
+    "Data-Driven Insights for Reducing Customer Churn and Managing Risk in the Banking Sector",
+    "https://github.com/bhaskarpal1707/banking-customers-churn-and-risk-analysis-excel-powerbi",
+    ["Excel", "Power BI"],
+    "Power BI",
+    "https://github.com/bhaskarpal1707/banking-customers-churn-and-risk-analysis-excel-powerbi",
+    "https://lnkd.in/p/gHU6QSPw",
+  ),
+  P(
+    "Customers Churn Analysis",
+    "Uncovering Drivers of Customer Retention and Reducing Churn through Data Insights",
+    "https://github.com/bhaskarpal1707/customers-churn-analysis-python",
+    ["Jupyter Notebook", "Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/customers-churn-analysis-python",
+    "https://lnkd.in/p/gC6UAMi2",
+  ),
+  P(
+    "Spotify Music Trends Analysis",
+    "Interactive Analysis of Music Trends, Artists & Listener Preferences",
+    "https://github.com/bhaskarpal1707/spotify-analysis-dashboard-powerbi",
+    ["Power BI"],
+    "Power BI",
+    "https://github.com/bhaskarpal1707/spotify-analysis-dashboard-powerbi",
+    "https://lnkd.in/p/gtbZ4MQg",
+  ),
+  P(
+    "PhonePe Data Analysis",
+    "Analyzing Digital Payment Trends, Transaction Performance & Operational Insights",
+    "https://github.com/bhaskarpal1707/phonepe-analysis-powerbi",
+    ["Power BI"],
+    "Power BI",
+    "https://github.com/bhaskarpal1707/phonepe-analysis-powerbi",
+    "https://lnkd.in/p/gQzN9vXb",
+  ),
+  P(
+    "E-Commerce Funnel Analysis",
+    "Analyzing Customer Journeys, Funnel Drop-Offs & Conversion Drivers",
+    "https://github.com/bhaskarpal1707/e-commerce-funnel-analysis",
+    ["Jupyter Notebook", "Python"],
+    "Python",
+    "https://github.com/bhaskarpal1707/e-commerce-funnel-analysis",
+    "https://lnkd.in/p/g5_-HgKP",
+  ),
+  P(
+    "AI Language Detection System",
+    "Real-Time Multilingual Text Classification with Machine Learning",
+    "https://github.com/bhaskarpal1707/Language-Detection-App",
+    ["Machine Learning", "Python"],
+    "Machine Learning",
+    "https://github.com/bhaskarpal1707/Language-Detection-App",
+    "https://lnkd.in/p/gxcNf5GC",
+  ),
+  P(
+    "LaTeX OCR",
+    "Fine-Tuning a Vision-Language Model for Handwritten & Printed Math-to-LaTeX OCR",
+    "https://github.com/bhaskarpal1707/qwen3.5-latex-ocr-finetune-v2",
+    ["Machine Learning", "Python"],
+    "Machine Learning",
+    "https://github.com/bhaskarpal1707/qwen3.5-latex-ocr-finetune",
+    "https://lnkd.in/p/gkV8aMVm",
+  ),
+  P(
+    "BanglaSum",
+    "Fine-Tuning a Small Language Model for Abstractive Bengali News Summarization",
+    "https://github.com/bhaskarpal1707/BanglaSum-Qwen3-XLSum",
+    ["Machine Learning", "Python"],
+    "Machine Learning",
+    "https://github.com/bhaskarpal1707/BanglaSum-Qwen3-XLSum",
+    "",
+  ),
+  P(
+    "BanglaVLM",
+    "Parameter-Efficient Adaptation of Lightweight Vision-Language Models for Bengali VQA & Cross-Dataset Generalization",
+    "https://github.com/bhaskarpal1707/BanglaVLM",
+    ["Machine Learning", "Python"],
+    "Machine Learning",
+    "https://github.com/bhaskarpal1707/BanglaVLM",
+    "https://lnkd.in/p/gQh4jNuu",
+    true,
   ),
 ];
+
+/* ───────────────────────── CERTIFICATIONS ─────────────────────────
+ * All 28 rows copied verbatim from the old portfolio's Google Sheet —
+ * exact names, descriptions, credential links and certificate images.
+ * ─────────────────────────────────────────────────────────────────── */
 
 export type Certification = {
   title: string;
-  issuer: string;
-  year: string;
+  description: string;
   url: string;
-  issuerUrl: string;
   image: string;
-  /** Short tag rendered as a status line, like a credential file row. */
-  credId: string;
 };
 
-/** NOTE: paste each certificate's real credential URL + image below —
- *  urls currently default to your LinkedIn profile. */
+const C = (title: string, description: string, url: string, image: string): Certification => ({
+  title,
+  description,
+  url,
+  image: image.startsWith("https://drive.google.com/file/d/")
+    ? `https://lh3.googleusercontent.com/d/${image.split("/d/")[1]?.split("/")[0]}`
+    : image,
+});
+
 export const certifications: Certification[] = [
-  {
-    title: "Harnessing the Power of Data with Power BI",
-    issuer: "Microsoft",
-    year: "2025",
-    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
-    issuerUrl: "https://www.microsoft.com/en-us/power-platform/products/power-bi",
-    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/phonepe-analysis-powerbi",
-    credId: "MSFT-PBI-2025",
-  },
-  {
-    title: "Google Data Analytics Professional Certificate",
-    issuer: "Google",
-    year: "2025",
-    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
-    issuerUrl: "https://grow.google/certificates/data-analytics/",
-    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Google-Search-Analysis",
-    credId: "GOOG-DA-2025",
-  },
-  {
-    title: "SQL (Advanced) Certificate",
-    issuer: "HackerRank",
-    year: "2025",
-    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
-    issuerUrl: "https://www.hackerrank.com/skills-verification/sql_advanced",
-    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Blinkit-Analysis-SQL-Project",
-    credId: "HR-SQLADV-2025",
-  },
-  {
-    title: "Python for Data Science, AI & Development",
-    issuer: "IBM · Coursera",
-    year: "2025",
-    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
-    issuerUrl: "https://www.coursera.org/learn/python-for-applied-data-science-ai",
-    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Language-Detection-App",
-    credId: "IBM-PYDS-2025",
-  },
-  {
-    title: "Tableau Desktop Specialist Training",
-    issuer: "Tableau",
-    year: "2025",
-    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
-    issuerUrl: "https://www.tableau.com/learn/certification",
-    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/spotify-analysis-dashboard-powerbi",
-    credId: "TDA-SPEC-2025",
-  },
-  {
-    title: "Machine Learning Specialization",
-    issuer: "DeepLearning.AI",
-    year: "2025",
-    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
-    issuerUrl: "https://www.deeplearning.ai/courses/machine-learning-specialization/",
-    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/boston-house-pricing-prediction-analysis",
-    credId: "DLAI-MLS-2025",
-  },
-  {
-    title: "Excel Skills for Business",
-    issuer: "Macquarie University · Coursera",
-    year: "2024",
-    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
-    issuerUrl: "https://www.coursera.org/specializations/excel",
-    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Hospital-Emergency-Room-Analysis-Using_Excel",
-    credId: "MQ-EXCEL-2024",
-  },
-  {
-    title: "Supervised Machine Learning: Regression & Classification",
-    issuer: "DeepLearning.AI · Stanford Online",
-    year: "2024",
-    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
-    issuerUrl: "https://www.deeplearning.ai/courses/machine-learning-specialization/",
-    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Customer-Churn-Analysis",
-    credId: "DLAI-SML-2024",
-  },
+  C(
+    "Meta Data Analyst Professional Certificate",
+    "Core data analytics skills in OSEMN, SQL, spreadsheets, Python, statistics, and data management.",
+    "https://www.coursera.org/account/accomplishments/professional-cert/USF2V9DH9W7O",
+    "https://lh3.googleusercontent.com/d/1rczayCC81oOMEh4gMOm0XaSUeI2EubJu",
+  ),
+  C(
+    "Data Analyst: Professional Certificate in Data Analysis",
+    "Professional Certification in Data Analysis, Analytics & Business Intelligence.",
+    "https://www.udemy.com/certificate/UC-fac5694f-3ba6-42bd-9acb-cf28251bab92/",
+    "https://lh3.googleusercontent.com/d/1p6OcA3kxK45p6aDHlX14NxAwO2o5DAL0",
+  ),
+  C(
+    "Google Analytics for Beginners",
+    "Google Analytics Academy — foundational skills in web analytics and the Google Analytics platform.",
+    "https://drive.google.com/file/d/1Tg4-doWsKtPII1JwLmsPHmDz1qjiYmp8/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1Tg4-doWsKtPII1JwLmsPHmDz1qjiYmp8",
+  ),
+  C(
+    "Data Analytics Essentials",
+    "Cisco Data Analytics Essentials — practical skills in data analysis, visualization, Excel, SQL & Tableau.",
+    "https://www.credly.com/badges/f4aa0d1d-ffdc-4d6c-9b8f-3d8c73014639/linked_in_profile",
+    "https://lh3.googleusercontent.com/d/1s0IzmJPWZ9bGdc7qUUfojaT6HEpb71Ym",
+  ),
+  C(
+    "Introduction to Data Analytics",
+    "Meta-authorized course via Coursera — foundational proficiency in data analytics.",
+    "https://drive.google.com/file/d/1A0T6m6Ci2Zow_LU-CK_FWVMM0TYhwCWz/view?usp=drive_link",
+    "https://lh3.googleusercontent.com/d/1A0T6m6Ci2Zow_LU-CK_FWVMM0TYhwCWz",
+  ),
+  C(
+    "Data Analysis with Spreadsheets and SQL",
+    "Meta-authorized course via Coursera — practical data analysis using spreadsheets and SQL.",
+    "https://drive.google.com/file/d/1U_3ih4HMO-IHZHYyIhVIFQnBV4RlXExO/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1U_3ih4HMO-IHZHYyIhVIFQnBV4RlXExO",
+  ),
+  C(
+    "Python Data Analytics",
+    "Meta-authorized course via Coursera — practical skills in Python for data analysis.",
+    "https://drive.google.com/file/d/1-vGP12RMjN6Z9QEtDqHAfNKUbkzYZvfx/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1-vGP12RMjN6Z9QEtDqHAfNKUbkzYZvfx",
+  ),
+  C(
+    "Statistics Foundations",
+    "Meta-authorized course via Coursera — core knowledge in statistical principles and methods.",
+    "https://drive.google.com/file/d/19-dwU3jIKh8X5veKQ9BSFJMScs5iCVOG/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/19-dwU3jIKh8X5veKQ9BSFJMScs5iCVOG",
+  ),
+  C(
+    "Introduction to Data Management",
+    "Meta-authorized course via Coursera — foundational data management concepts and practices.",
+    "https://drive.google.com/file/d/1yrnPQ5hedWkjm57pEw7BV_EODcSi6_7p/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1yrnPQ5hedWkjm57pEw7BV_EODcSi6_7p",
+  ),
+  C(
+    "Foundations: Data, Data, Everywhere",
+    "Google-authorized course via Coursera — strong understanding of foundational data concepts.",
+    "https://drive.google.com/file/d/1HWsS-h_1TRUUX3nP_GyOMcjRmzlpcm9j/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1HWsS-h_1TRUUX3nP_GyOMcjRmzlpcm9j",
+  ),
+  C(
+    "Extract, Transform and Load Data in Power BI",
+    "Microsoft-authorized course via Coursera — proficiency in ETL processes using Power BI.",
+    "https://drive.google.com/file/d/1ayXu9P3k8rXnVZlGlPYbrcNr4vp4kp0R/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1ayXu9P3k8rXnVZlGlPYbrcNr4vp4kp0R",
+  ),
+  C(
+    "Data Modeling in Power BI",
+    "Microsoft-authorized course via Coursera — expertise in data modeling techniques using Power BI.",
+    "https://drive.google.com/file/d/1yyAniMmnfDL6VBPz6XRJoJQl2PcPizO4/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1yyAniMmnfDL6VBPz6XRJoJQl2PcPizO4",
+  ),
+  C(
+    "Harnessing the Power of Data with Power BI",
+    "Microsoft-authorized course via Coursera — foundational Power BI for data analysis and visualization.",
+    "https://drive.google.com/file/d/15ybmZwXYmDlzeUoePlQ-lt2I_0e6LXVQ/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/15ybmZwXYmDlzeUoePlQ-lt2I_0e6LXVQ",
+  ),
+  C(
+    "Preparing Data for Analysis with Microsoft Excel",
+    "Microsoft-authorized course via Coursera — data preparation and analysis using Excel.",
+    "https://drive.google.com/file/d/1Zf-tdGBVm0onEiWtHYYzAb1Ik04Q9Zm0/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1Zf-tdGBVm0onEiWtHYYzAb1Ik04Q9Zm0",
+  ),
+  C(
+    "Master Data Management for Beginners",
+    "Microsoft-authorized course via Coursera — data management concepts and practices.",
+    "https://drive.google.com/file/d/18xt2e2bIFhA5roLc-dy0UzmyoVjTjO4N/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/18xt2e2bIFhA5roLc-dy0UzmyoVjTjO4N",
+  ),
+  C(
+    "Data Science Foundations - Level 2 (V2)",
+    "IBM Data Science Foundations — methodologies, statistics, programming and open source tools.",
+    "https://www.credly.com/badges/75639298-2fe6-4f5c-9ca3-2ea6a00fecff",
+    "https://lh3.googleusercontent.com/d/1cU2q7eAV5dfpnVPB4nnSXY8GRNisFdY7",
+  ),
+  C(
+    "Data Science Tools",
+    "Data Science Tools with Jupyter Notebooks, RStudio, IBM Watson Studio and data visualization.",
+    "https://www.credly.com/badges/75639298-2fe6-4f5c-9ca3-2ea6a00fecff",
+    "https://lh3.googleusercontent.com/d/1efhPg3WUegra7-X5-yPFsvFyy7YYF0ZK",
+  ),
+  C(
+    "Data Science Methodology",
+    "Problem solving, data preparation, modeling, evaluation and deployment.",
+    "https://drive.google.com/file/d/1yTlTA_KnM8n_84AKhJ-6Fujksp_r_5Rb/view?usp=drive_link",
+    "https://lh3.googleusercontent.com/d/1yTlTA_KnM8n_84AKhJ-6Fujksp_r_5Rb",
+  ),
+  C(
+    "Data Science 101",
+    "Data science fundamentals, tools, methodologies and real-world applications.",
+    "https://drive.google.com/file/d/1-qeR0VGXQlFKtWrTzOYbEiv-WY_yuyZr/view?usp=drive_link",
+    "https://lh3.googleusercontent.com/d/1-qeR0VGXQlFKtWrTzOYbEiv-WY_yuyZr",
+  ),
+  C(
+    "SQL and Relational Databases 101",
+    "IBM-powered course on Cognitive Class — foundational skills in SQL and relational databases.",
+    "https://drive.google.com/file/d/1P95_hpszQkGbIgUbpoxAt9h-jBGBHlhz/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1P95_hpszQkGbIgUbpoxAt9h-jBGBHlhz",
+  ),
+  C(
+    "Career Essentials in Data Analysis by Microsoft and LinkedIn",
+    "Career Essentials in Data Analysis — data analytics and data visualization.",
+    "https://www.linkedin.com/learning/certificates/e4fee20a12c4c9a64fe6ad16b4a597637dd84a10223af0b884a7c65b251149c9?trk=share_certificate&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bg8n2u%2FioS9GdH7ob%2F6z7NA%3D%3D",
+    "https://lh3.googleusercontent.com/d/1INLbUo0OeueV09ppwJ_sGZRqaZhmlWSJ",
+  ),
+  C(
+    "Introduction to Career Skills in Data Analytics",
+    "Microsoft & LinkedIn Career Essentials — data analytics, visualization & analytical skills.",
+    "https://drive.google.com/file/d/1-v90IhW66ZYS82OEMxc5x6u6bGLqPe6H/view?usp=drive_link",
+    "https://lh3.googleusercontent.com/d/1-v90IhW66ZYS82OEMxc5x6u6bGLqPe6H",
+  ),
+  C(
+    "Learning Data Analytics: 1 Foundations",
+    "LinkedIn Learning — Data Analytics Foundations: core concepts, methods & best practices.",
+    "https://www.linkedin.com/learning/certificates/35cb9b323674526606259cd1d4d706c58fbaaa051d45a244b8c5b688c8e106e5?trk=share_certificate&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bg8n2u%2FioS9GdH7ob%2F6z7NA%3D%3D",
+    "https://lh3.googleusercontent.com/d/1x6yI3VLNo4g7MlugE6yHZhJcgAwvqWr1",
+  ),
+  C(
+    "Learning Data Analytics Part 2: Extending and Applying Core Knowledge",
+    "LinkedIn Learning — advanced data analytics concepts, applications & practical techniques.",
+    "https://www.linkedin.com/learning/certificates/16ab8fa4069c0a87ab0a30da069c9333391ca4098e523d7599bd65429905a829?trk=share_certificate&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3Bg8n2u%2FioS9GdH7ob%2F6z7NA%3D%3D",
+    "https://lh3.googleusercontent.com/d/1d8lDT1GlAF2NATcEK-LxiTLVc7Y-d_5p",
+  ),
+  C(
+    "Artificial Intelligence Expert Certification (2021 Edition)",
+    "18.5-hour Udemy course — proficiency in core AI concepts and applications.",
+    "https://drive.google.com/file/d/1wgB08mkq-DGC8T2hcrrM3g_PY_Sphuz3/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1wgB08mkq-DGC8T2hcrrM3g_PY_Sphuz3",
+  ),
+  C(
+    "The Fundamentals of Digital Marketing",
+    "Google Digital Unlocked — foundational digital marketing principles and strategies.",
+    "https://drive.google.com/file/d/1K70EQWLboxkeoLCOZymNbDBJJ5C-9Pqm/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1K70EQWLboxkeoLCOZymNbDBJJ5C-9Pqm",
+  ),
+  C(
+    "Computer Fundamentals: Hardware",
+    "Pluralsight course — foundational understanding of computer hardware concepts and components.",
+    "https://drive.google.com/file/d/1q66glxgrMCED1zObz1scRzH6b8MxGOs3/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1q66glxgrMCED1zObz1scRzH6b8MxGOs3",
+  ),
+  C(
+    "Communication Skills",
+    "TCS iON online course — effective verbal and non-verbal communication techniques.",
+    "https://drive.google.com/file/d/1mJ7IVurCKFg3xfyNVSzBLPsfxFrQMDjK/view?usp=sharing",
+    "https://lh3.googleusercontent.com/d/1mJ7IVurCKFg3xfyNVSzBLPsfxFrQMDjK",
+  ),
 ];
 
 export const stats = [
-  { value: 26, suffix: "+", label: "Projects shipped" },
+  { value: 37, suffix: "+", label: "Projects shipped" },
   { value: 3, suffix: "", label: "Research internships" },
-  { value: 8, suffix: "+", label: "Certifications" },
+  { value: 28, suffix: "", label: "Certifications" },
   { value: 5, suffix: "+", label: "Years of code" },
 ];
 
@@ -705,7 +953,7 @@ export const versions = [
     tag: "V3 · 26—now",
     org: "Indian Statistical Institute, Kolkata",
     role: "Research Intern",
-    period: "Apr 2026 — Present",
+    period: "Apr, 2026 — Present",
     orgUrl: "https://www.isical.ac.in/",
     note: "Multilingual speech processing & ASR for low-resource Bengali — PyTorch, fairseq2, WER evaluation.",
   },
@@ -713,7 +961,7 @@ export const versions = [
     tag: "V2 · 26",
     org: "IDEAS Technology Innovation Hub @ ISI",
     role: "Trainee Intern (Software Development)",
-    period: "Jan 2026 — Mar 2026",
+    period: "Jan, 2026 — Mar, 2026",
     orgUrl: "https://www.ideas-tih.org/",
     note: "Keypoint annotation, object tracking & segmentation pipelines — Label Studio, CVAT, Fiji, Docker.",
   },
@@ -721,7 +969,7 @@ export const versions = [
     tag: "V1 · 25",
     org: "Indian Statistical Institute, Kolkata",
     role: "Trainee Intern",
-    period: "Nov 2025 — Dec 2025",
+    period: "Nov, 2025 — Dec, 2025",
     orgUrl: "https://www.isical.ac.in/",
     note: "Deep-learning ASR under faculty supervision — Librosa, DeepFilterNet, SepFormer experiments.",
   },

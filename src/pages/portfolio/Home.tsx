@@ -337,7 +337,7 @@ export default function Home() {
               to="/projects"
               className="link-sweep font-mono2 text-xs tracking-[0.25em] text-muted-foreground transition-colors hover:text-foreground"
             >
-              VIEW ALL 26 →
+              VIEW ALL {projects.length} →
             </Link>
           </Reveal>
         </div>
@@ -360,8 +360,8 @@ export default function Home() {
                     <h3 className="font-display text-base font-semibold leading-snug text-foreground transition-colors group-hover:text-foreground">
                       {p.title}
                     </h3>
-                    <span className="font-mono2 text-[10px] tracking-[0.2em] text-muted-foreground">
-                      {p.year}
+                    <span className="font-mono2 text-[10px] uppercase tracking-[0.2em] text-primary">
+                      ★ Featured
                     </span>
                   </div>
                   <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-muted-foreground">

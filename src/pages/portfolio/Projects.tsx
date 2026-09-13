@@ -38,7 +38,7 @@ export default function Projects() {
               The <span className="text-primary">work</span>, queryable
             </>
           }
-          description="26 repos across BI dashboards, SQL deep-dives, ML pipelines and end-to-end builds. Filter by stack; every card links to GitHub and LinkedIn."
+          description={`${projects.length} projects across BI dashboards, SQL deep-dives, ML pipelines and end-to-end builds. Filter by stack; every card links to GitHub and LinkedIn.`}
         />
       </section>
 
@@ -104,8 +104,8 @@ export default function Projects() {
                   <h3 className="font-display text-lg font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover:text-primary">
                     {p.title}
                   </h3>
-                  <span className="shrink-0 font-mono2 text-[10px] tracking-[0.2em] text-muted-foreground">
-                    {p.year}
+                  <span className="shrink-0 font-mono2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    {p.tags[0]}
                   </span>
                 </div>
 
