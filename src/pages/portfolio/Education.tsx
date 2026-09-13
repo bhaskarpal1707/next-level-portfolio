@@ -1,71 +1,59 @@
-import { motion } from "framer-motion";
-import { ArrowUpRight, GraduationCap } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { education } from "@/data/portfolio";
 import { Reveal, SectionHeading } from "@/components/portfolio/Primitives";
 
 export default function Education() {
   return (
-    <div className="pt-28">
-      <section className="mx-auto max-w-6xl px-4 sm:px-6">
+    <div className="pt-32">
+      <section className="mx-auto max-w-6xl px-6 sm:px-10">
         <SectionHeading
           eyebrow="Education"
           title={
             <>
-              The <span className="text-gradient">learning graph</span>
+              The <span className="text-primary">learning graph</span>
             </>
           }
           description="From boards to master's — every step compounded. Click through to verify any result."
         />
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 pt-14 sm:px-6">
-        <div className="grid gap-4 md:grid-cols-2">
+      <section className="mx-auto max-w-6xl px-6 pt-14 sm:px-10">
+        <div className="divide-y divide-border border-y border-border">
           {education.map((ed, i) => (
-            <Reveal key={ed.degree} delay={i * 0.08}>
-              <motion.div
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className="glass glass-hover noise relative h-full overflow-hidden rounded-2xl p-7"
+            <Reveal key={ed.degree} delay={i * 0.05}>
+              <a
+                href={ed.resultUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-4 py-7 transition-colors duration-300 sm:grid-cols-[3rem_1fr_12rem_2rem] sm:gap-6"
               >
-                <div className="flex items-start justify-between">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl border border-amber-400/30 bg-amber-400/10 text-amber-300">
-                    <GraduationCap className="h-5 w-5" />
+                <span className="font-mono2 text-xs text-muted-foreground">
+                  {String(education.length - i).padStart(2, "0")}
+                </span>
+                <span>
+                  <span className="font-display text-lg font-semibold text-foreground transition-colors group-hover:text-primary sm:text-xl">
+                    {ed.degree}
                   </span>
-                  <span className="font-mono2 text-[10px] tracking-[0.3em] text-stone-500">
-                    {String(education.length - i).padStart(2, "0")}
+                  <span className="mt-1 block text-sm text-muted-foreground">
+                    {ed.school} · {ed.period}
                   </span>
-                </div>
-
-                <h3 className="font-display mt-6 text-xl font-semibold leading-snug text-stone-100">
-                  {ed.degree}
-                </h3>
-                <p className="mt-1.5 text-sm text-stone-400">{ed.school}</p>
-
-                <div className="mt-6 flex flex-wrap items-center gap-3">
-                  <span className="glass rounded-full px-4 py-1.5 font-mono2 text-[11px] tracking-[0.15em] text-amber-300/90">
-                    {ed.period}
+                </span>
+                <span className="text-right font-mono2 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                  {ed.scoreLabel}{" "}
+                  <span className="font-display text-base font-semibold text-foreground">
+                    {ed.score}
                   </span>
-                  <span className="font-mono2 text-[11px] tracking-[0.15em] text-stone-500">
-                    {ed.scoreLabel}:{" "}
-                    <span className="stat-glow font-display text-sm font-bold text-amber-400">
-                      {ed.score}
-                    </span>
-                  </span>
-                </div>
-
-                <a
-                  href={ed.resultUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group mt-7 inline-flex items-center gap-2 font-mono2 text-[11px] uppercase tracking-[0.25em] text-stone-400 transition-colors hover:text-amber-400"
-                >
-                  View result
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-transtone-y-0.5 group-hover:transtone-x-0.5" />
-                </a>
-              </motion.div>
+                </span>
+                <ArrowUpRight className="hidden h-4 w-4 translate-y-0.5 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary sm:block" />
+              </a>
             </Reveal>
           ))}
         </div>
+        <Reveal delay={0.2}>
+          <p className="mt-8 font-mono2 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+            All scores verified — view result opens the official document ↗
+          </p>
+        </Reveal>
       </section>
     </div>
   );

@@ -31,7 +31,7 @@ function RouteLoading() {
   return (
     <div className="flex min-h-[60vh] items-center justify-center">
       <div className="flex items-center gap-3">
-        <span className="h-2 w-2 animate-pulse rounded-full bg-amber-400" />
+        <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
         <span className="font-mono2 text-xs uppercase tracking-[0.3em] text-stone-500">
           Loading
         </span>
@@ -59,14 +59,14 @@ class RootErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="flex min-h-screen items-center justify-center bg-[#0b0a08] p-6 text-[#f5f1ea]">
+        <div className="flex min-h-screen items-center justify-center bg-background p-6 text-foreground">
           <div className="max-w-lg text-center">
             <p className="font-display text-sm font-semibold">Preview runtime error</p>
-            <p className="mt-2 break-words text-xs text-stone-400">
+            <p className="mt-2 break-words text-xs text-muted-foreground">
               {this.state.message}
             </p>
             {this.state.stack && (
-              <pre className="mt-3 max-h-40 overflow-auto rounded border border-white/10 p-2 text-left font-mono2 text-[10px] leading-4 text-stone-500">
+              <pre className="mt-3 max-h-40 overflow-auto rounded border border-border p-2 text-left font-mono2 text-[10px] leading-4 text-muted-foreground">
                 {this.state.stack}
               </pre>
             )}

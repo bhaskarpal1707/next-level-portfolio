@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
  */
 export default function Marquee({
   items,
-  duration = 36,
+  duration = 40,
   reverse = false,
   className = "",
 }: {
@@ -20,7 +20,7 @@ export default function Marquee({
   return (
     <div
       className={cn(
-        "marquee-paused relative overflow-hidden py-4",
+        "marquee-paused relative overflow-hidden py-3",
         "[mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]",
         className,
       )}
@@ -33,10 +33,10 @@ export default function Marquee({
         {row.map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className="mx-4 flex shrink-0 items-center gap-4 font-display text-lg font-medium text-stone-400/90 sm:text-xl"
+            className="mx-5 flex shrink-0 items-center gap-5 font-mono2 text-xs uppercase tracking-[0.3em] text-muted-foreground"
           >
             {item}
-            <span className="text-amber-400/70">✦</span>
+            <span className="h-1 w-1 rounded-full bg-primary/50" />
           </span>
         ))}
       </div>

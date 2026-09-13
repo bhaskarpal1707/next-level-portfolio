@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export function Reveal({
   children,
   delay = 0,
-  y = 28,
+  y = 20,
   className = "",
 }: {
   children: ReactNode;
@@ -18,7 +18,7 @@ export function Reveal({
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
@@ -38,15 +38,9 @@ export function SectionHeading({
 }) {
   return (
     <Reveal className={align === "center" ? "text-center" : ""}>
-      <div
-        className={`flex items-center gap-3 ${align === "center" ? "justify-center" : ""}`}
-      >
-        <span className="h-px w-8 bg-gradient-to-r from-amber-400/80 to-transparent" />
-        <span className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-amber-400/90">
-          {eyebrow}
-        </span>
-        <span className="h-px w-8 bg-gradient-to-l from-amber-400/80 to-transparent" />
-      </div>
+      <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-muted-foreground">
+        {eyebrow}
+      </p>
       <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
         {title}
       </h2>
@@ -65,7 +59,7 @@ export function SectionHeading({
 
 export function TagChip({ children }: { children: ReactNode }) {
   return (
-    <span className="glass inline-flex items-center rounded-full px-3 py-1 font-mono2 text-[11px] tracking-wide text-stone-300">
+    <span className="inline-flex items-center rounded-full border border-border px-3 py-1 font-mono2 text-[11px] tracking-wide text-muted-foreground">
       {children}
     </span>
   );
