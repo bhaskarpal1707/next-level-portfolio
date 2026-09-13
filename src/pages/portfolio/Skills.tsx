@@ -94,6 +94,7 @@ export default function Skills() {
               caption={charts[1].caption}
               source="PYTHON · MATPLOTLIB · AUTO-UPDATED"
               ratio="aspect-[16/10]"
+              tilt
             />
           </Reveal>
         </div>

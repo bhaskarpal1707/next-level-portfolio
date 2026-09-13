@@ -82,7 +82,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: Math.min(0.25, i * 0.04), ease: [0.22, 1, 0.36, 1] }}
-              className="panel group flex flex-col overflow-hidden transition-colors duration-300 hover:border-primary/40"
+              className="tilt-card panel group flex flex-col overflow-hidden transition-colors duration-300 hover:border-primary/40"
             >
               {/* repo image — 16:9 plate, zooms on hover */}
               <a

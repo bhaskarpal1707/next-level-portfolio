@@ -39,7 +39,7 @@ export default function Certifications() {
         <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {certifications.map((c, i) => (
             <Reveal key={c.title} delay={Math.min(0.3, i * 0.05)}>
-              <article className="panel group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/40">
+              <article className="tilt-card panel group flex h-full flex-col overflow-hidden transition-all duration-300 hover:border-primary/40">
                 {/* seal header */}
                 <div className="flex items-center justify-between border-b border-border px-5 py-4">
                   <span className="grid h-9 w-9 place-items-center border border-primary/30 text-primary">

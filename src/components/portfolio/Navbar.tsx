@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navLinks, profile, fileMeta } from "@/data/portfolio";
+import { navLinks, profile } from "@/data/portfolio";
 
 /**
- * File-chrome header: the site presents itself as an open data file.
- * Left = filename + status dot, center = sheet nav, right = meta + resume.
+ * Header: wordmark + gradient active-link nav + resume button.
  */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -49,11 +48,8 @@ export default function Navbar() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-50" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
-            <span className="font-mono2 text-xs font-medium tracking-[0.18em] text-foreground">
-              {fileMeta.filename}
-            </span>
-            <span className="hidden font-mono2 text-[10px] tracking-[0.15em] text-muted-foreground sm:inline">
-              — {fileMeta.handle}
+            <span className="font-display text-sm font-semibold tracking-[0.14em] text-foreground">
+              BHASKAR<span className="text-grad"> PAL</span>
             </span>
           </Link>
 
@@ -76,9 +72,6 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="hidden font-mono2 text-[10px] tracking-[0.2em] text-muted-foreground xl:inline">
-              {fileMeta.city}
-            </span>
             <a
               href={profile.resume}
               target="_blank"
@@ -141,7 +134,7 @@ export default function Navbar() {
                 Resume ↗
               </a>
               <span className="font-mono2 text-xs tracking-widest text-muted-foreground">
-                {fileMeta.city} · 22.5726° N, 88.3639° E
+                KOLKATA · 22.5726° N, 88.3639° E
               </span>
             </div>
           </motion.div>

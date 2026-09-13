@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { DiPython, DiMysql, DiPostgresql, DiGithub } from "react-icons/di";
 import {
   ChartLine,
@@ -308,19 +308,38 @@ function resolve(logo: string): { Comp: LogoComp; color?: string } {
 }
 
 /**
- * Interactive skill tile: logo + name, lifts and glows ember on hover.
- * The ember accent keeps the monochrome ink palette coherent.
+ * Interactive 3D skill tile: pointer-tracking tilt + glare, logo re-tints
+ * and lifts on hover. Logo marks keep their brand colors until hover.
  */
 export function SkillTile({ name, logo, index }: { name: string; logo: string; index: number }) {
   const { Comp, color } = resolve(logo);
   const [hover, setHover] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
   const tint = hover ? "var(--primary)" : color || "currentColor";
+
+  const onMove = (e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    el.style.setProperty("--rx", `${(-py * 10).toFixed(2)}deg`);
+    el.style.setProperty("--ry", `${(px * 12).toFixed(2)}deg`);
+    el.style.setProperty("--gx", `${((px + 0.5) * 100).toFixed(0)}%`);
+    el.style.setProperty("--gy", `${((py + 0.5) * 100).toFixed(0)}%`);
+  };
 
   return (
     <div
+      ref={ref}
       onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      className="panel group relative flex flex-col items-center gap-3 px-3 py-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-muted"
+      onMouseLeave={() => {
+        setHover(false);
+        ref.current?.style.setProperty("--rx", "0deg");
+        ref.current?.style.setProperty("--ry", "0deg");
+      }}
+      onMouseMove={onMove}
+      className="tilt-card panel group relative flex flex-col items-center gap-3 px-3 py-6 hover:border-primary/40"
     >
       <span className="absolute left-2 top-2 font-mono2 text-[9px] tracking-widest text-muted-foreground/50">
         {String(index + 1).padStart(2, "0")}

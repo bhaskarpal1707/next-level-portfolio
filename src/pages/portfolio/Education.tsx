@@ -47,7 +47,7 @@ export default function Education() {
 
                   {/* card */}
                   <div
-                    className={`panel group p-6 transition-colors duration-300 hover:border-primary/40 [direction:ltr] ${
+                    className={`tilt-card panel group p-6 transition-colors duration-300 hover:border-primary/40 [direction:ltr] ${
                       left ? "md:mr-10" : "md:ml-10"
                     }`}
                   >

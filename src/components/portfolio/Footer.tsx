@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
-import { profile, socials, fileMeta } from "@/data/portfolio";
+import { profile, socials } from "@/data/portfolio";
 import Socials from "@/components/portfolio/BrandIcons";
 
 export default function Footer() {
@@ -55,7 +55,7 @@ export default function Footer() {
             UNSAVED CHANGES: NONE — ALWAYS SHIPPING
           </span>
           <span>
-            {socials.length} NETWORKS · {fileMeta.handle}
+            {socials.length} NETWORKS · @bhaskarpal1707
           </span>
         </div>
       </div>

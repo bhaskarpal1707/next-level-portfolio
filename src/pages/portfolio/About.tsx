@@ -33,7 +33,19 @@ export default function About() {
               <span className="absolute -bottom-3 -left-3 h-5 w-5 border-b border-l border-primary/60" />
               <span className="absolute -bottom-3 -right-3 h-5 w-5 border-b border-r border-primary/60" />
 
-              <div className="panel relative overflow-hidden">
+              <div
+                className="tilt-card panel relative overflow-hidden"
+                onMouseMove={(e) => {
+                  const el = e.currentTarget;
+                  const r = el.getBoundingClientRect();
+                  const px = (e.clientX - r.left) / r.width - 0.5;
+                  const py = (e.clientY - r.top) / r.height - 0.5;
+                  el.style.setProperty("--rx", `${(-py * 10).toFixed(2)}deg`);
+                  el.style.setProperty("--ry", `${(px * 12).toFixed(2)}deg`);
+                  el.style.setProperty("--gx", `${((px + 0.5) * 100).toFixed(0)}%`);
+                  el.style.setProperty("--gy", `${((py + 0.5) * 100).toFixed(0)}%`);
+                }}
+              >
                 <motion.img
                   src={profile.aboutImage}
                   alt="Bhaskar Pal — data analyst"
@@ -44,10 +56,10 @@ export default function About() {
                   transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                   className="aspect-[4/5] w-full object-cover"
                 />
-                {/* scanning line */}
+                {/* scanning line — gradient sweep */}
                 <motion.span
                   aria-hidden
-                  className="absolute inset-x-0 h-px bg-primary/70"
+                  className="bg-grad absolute inset-x-0 h-px"
                   initial={{ top: "0%", opacity: 0 }}
                   whileInView={{ top: ["0%", "100%"], opacity: [0, 1, 1, 0] }}
                   viewport={{ once: true }}

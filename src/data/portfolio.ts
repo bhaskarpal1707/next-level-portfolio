@@ -116,16 +116,6 @@ export const socials: Social[] = [
   },
 ];
 
-/** File-chrome metadata shown around the hero (the "open data file" feel). */
-export const fileMeta = {
-  filename: "PORTFOLIO.PARQUET",
-  dims: "1920 × ∞ px",
-  depth: "RGB / 32-bit",
-  updated: "SEP 2026",
-  handle: "@bhaskarpal1707",
-  city: "KOLKATA, IN",
-};
-
 export const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
