@@ -72,31 +72,40 @@ export default function Projects() {
                 transition={{ duration: 0.25 }}
               >
                 <Reveal>
-                  <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-4 py-6 transition-colors duration-300 sm:grid-cols-[3rem_1fr_10rem_6rem_2rem] sm:gap-6"
-                  >
-                    <span className="font-mono2 text-xs text-muted-foreground">
-                      {String(projects.indexOf(p) + 1).padStart(2, "0")}
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-4 py-6 transition-colors duration-300 sm:grid-cols-[3rem_1fr_10rem_6rem_7rem_2rem] sm:gap-6"
+                >
+                  <span className="font-mono2 text-xs text-muted-foreground">
+                    {String(projects.indexOf(p) + 1).padStart(2, "0")}
+                  </span>
+                  <span>
+                    <span className="font-display text-lg font-semibold text-foreground transition-colors group-hover:text-primary sm:text-xl">
+                      {p.title}
                     </span>
-                    <span>
-                      <span className="font-display text-lg font-semibold text-foreground transition-colors group-hover:text-primary sm:text-xl">
-                        {p.title}
-                      </span>
-                      <span className="mt-1 block max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                        {p.description}
-                      </span>
+                    <span className="mt-1 block max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                      {p.description}
                     </span>
-                    <span className="hidden font-mono2 text-[11px] uppercase tracking-[0.2em] text-muted-foreground sm:block">
-                      {p.category}
-                    </span>
-                    <span className="hidden font-mono2 text-[11px] tracking-[0.2em] text-muted-foreground sm:block">
-                      {p.year}
-                    </span>
-                    <ArrowUpRight className="h-4 w-4 translate-y-0.5 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
-                  </a>
+                  </span>
+                  <span className="hidden font-mono2 text-[11px] uppercase tracking-[0.2em] text-muted-foreground sm:block">
+                    {p.category}
+                  </span>
+                  <span className="hidden font-mono2 text-[11px] tracking-[0.2em] text-muted-foreground sm:block">
+                    {p.year}
+                  </span>
+                  <span className="panel relative hidden aspect-[4/3] overflow-hidden sm:block">
+                    <img
+                      src={`https://opengraph.githubassets.com/1/${p.url.replace("https://github.com/", "")}`}
+                      alt={`${p.title} preview`}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover object-top grayscale transition-[filter,transform] duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
+                    />
+                  </span>
+                  <ArrowUpRight className="hidden h-4 w-4 translate-y-0.5 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary sm:block" />
+                </a>
                 </Reveal>
               </motion.div>
             ))}
