@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 import { navLinks, profile } from "@/data/portfolio";
 
 /**
- * Header: wordmark + gradient active-link nav + resume button.
+ * Header: gradient wordmark, section nav, resume CTA.
  */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
