@@ -131,8 +131,18 @@ export default function Navbar() {
                 </motion.div>
               ))}
             </div>
-            <div className="px-8 pb-10 font-mono2 text-xs tracking-widest text-muted-foreground">
-              {fileMeta.city} · 22.5726° N, 88.3639° E
+            <div className="flex items-center gap-3 border-t border-border pt-6">
+              <a
+                href={profile.resume}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-primary rounded-md px-4 py-2.5 text-sm font-medium text-foreground"
+              >
+                Resume ↗
+              </a>
+              <span className="font-mono2 text-xs tracking-widest text-muted-foreground">
+                {fileMeta.city} · 22.5726° N, 88.3639° E
+              </span>
             </div>
           </motion.div>
         )}

@@ -20,6 +20,7 @@ import PageShell from "@/components/portfolio/PageShell";
 const Home = lazy(() => import("./pages/portfolio/Home.tsx"));
 const About = lazy(() => import("./pages/portfolio/About.tsx"));
 const Experience = lazy(() => import("./pages/portfolio/Experience.tsx"));
+const Skills = lazy(() => import("./pages/portfolio/Skills.tsx"));
 const Projects = lazy(() => import("./pages/portfolio/Projects.tsx"));
 const Charts = lazy(() => import("./pages/portfolio/Charts.tsx"));
 const Education = lazy(() => import("./pages/portfolio/Education.tsx"));
@@ -138,6 +139,7 @@ createRoot(document.getElementById("root")!).render(
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/experience" element={<Experience />} />
+              <Route path="/skills" element={<Skills />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/charts" element={<Charts />} />
               <Route path="/education" element={<Education />} />

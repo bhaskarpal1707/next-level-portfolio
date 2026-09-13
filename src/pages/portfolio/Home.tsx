@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, MapPin, Plus } from "lucide-react";
+import { FiDownload } from "react-icons/fi";
 import {
   profile,
   fileMeta,
@@ -13,6 +14,7 @@ import {
 } from "@/data/portfolio";
 import Marquee from "@/components/portfolio/Marquee";
 import Magnetic from "@/components/portfolio/Magnetic";
+import Socials from "@/components/portfolio/BrandIcons";
 import VideoShowcase from "@/components/portfolio/VideoShowcase";
 import Figure from "@/components/portfolio/Figure";
 import { Reveal, SectionHeading } from "@/components/portfolio/Primitives";
@@ -173,12 +175,33 @@ export default function Home() {
               <ArrowRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </Magnetic>
+          <Magnetic>
+            <a
+              href={profile.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary group inline-flex items-center gap-2 rounded-md px-5 py-3 font-display text-sm font-semibold text-foreground"
+            >
+              Resume
+              <FiDownload className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-y-0.5" />
+            </a>
+          </Magnetic>
           <Link
             to="/contact"
             className="link-sweep text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             Let's connect
           </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4"
+        >
+          <Socials />
+          <span className="h-4 w-px bg-border" aria-hidden />
           <span className="flex items-center gap-2 font-mono2 text-xs tracking-widest text-muted-foreground">
             <MapPin className="h-3.5 w-3.5" />
             {fileMeta.city}
@@ -290,7 +313,7 @@ export default function Home() {
           {featured.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.04}>
               <a
-                href={p.url}
+                href={p.githubUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="row-hover group grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-4 py-6 sm:grid-cols-[3rem_1fr_10rem_2rem] sm:gap-6"
@@ -308,7 +331,7 @@ export default function Home() {
                   {/* mobile: inline thumbnail */}
                   <span className="panel mt-3 block aspect-[16/9] overflow-hidden sm:hidden">
                     <img
-                      src={`https://opengraph.githubassets.com/1/${p.url.replace("https://github.com/", "")}`}
+                      src={p.image}
                       alt={`${p.title} preview`}
                       loading="lazy"
                       decoding="async"
@@ -317,7 +340,7 @@ export default function Home() {
                   </span>
                 </span>
                 <span className="hidden font-mono2 text-[11px] uppercase tracking-[0.2em] text-muted-foreground sm:block">
-                  {p.category}
+                  {p.tags[0]}
                 </span>
                 <ArrowUpRight className="h-4 w-4 translate-y-0.5 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
               </a>

@@ -49,6 +49,10 @@ export const charts: Chart[] = [
   },
 ];
 
+/** GitHub repo → opengraph preview card (live, always in sync with the repo). */
+export const repoOgImage = (githubUrl: string) =>
+  `https://opengraph.githubassets.com/1/${githubUrl.replace("https://github.com/", "")}`;
+
 export const profile = {
   name: "Bhaskar Pal",
   firstName: "Bhaskar",
@@ -71,6 +75,47 @@ export const profile = {
   videoUrl: "",
 };
 
+/** Social handles shown in the hero, footer and contact CTA. */
+export type Social = {
+  label: string;
+  url: string;
+  icon: "linkedin" | "github" | "facebook" | "x" | "huggingface" | "mail";
+  handle: string;
+};
+
+export const socials: Social[] = [
+  {
+    label: "LinkedIn",
+    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+    icon: "linkedin",
+    handle: "in/bhaskar-pal-2k02",
+  },
+  {
+    label: "GitHub",
+    url: "https://github.com/bhaskarpal1707",
+    icon: "github",
+    handle: "@bhaskarpal1707",
+  },
+  {
+    label: "Facebook",
+    url: "https://www.facebook.com/bhaskarpal1707",
+    icon: "facebook",
+    handle: "bhaskarpal1707",
+  },
+  {
+    label: "X (Twitter)",
+    url: "https://x.com/bhaskarpal1707",
+    icon: "x",
+    handle: "@bhaskarpal1707",
+  },
+  {
+    label: "Hugging Face",
+    url: "https://huggingface.co/bhaskarpal1707",
+    icon: "huggingface",
+    handle: "bhaskarpal1707",
+  },
+];
+
 /** File-chrome metadata shown around the hero (the "open data file" feel). */
 export const fileMeta = {
   filename: "PORTFOLIO.PARQUET",
@@ -85,9 +130,9 @@ export const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Experience", to: "/experience" },
-  { label: "Projects", to: "/projects" },
-  { label: "Charts", to: "/charts" },
+  { label: "Skills", to: "/skills" },
   { label: "Education", to: "/education" },
+  { label: "Projects", to: "/projects" },
   { label: "Certifications", to: "/certifications" },
   { label: "Contact", to: "/contact" },
 ];
@@ -127,6 +172,10 @@ export type Experience = {
   orgUrl: string;
   points: string[];
   tags: string[];
+  /** Roadmap coordinates — the storytelling journey line on /experience. */
+  station: number; // 0..1 position along the roadmap
+  metric: string;
+  metricLabel: string;
 };
 
 export const experiences: Experience[] = [
@@ -141,6 +190,9 @@ export const experiences: Experience[] = [
       "Expanded a noisy, real-world Bengali speech corpus by curating and validating additional speech samples, while performing error analysis, model evaluation, and documenting experimental findings to support ongoing ASR research.",
     ],
     tags: ["Python", "PyTorch", "fairseq2", "ASR", "WER"],
+    station: 1,
+    metric: "ASR",
+    metricLabel: "Bengali speech research",
   },
   {
     role: "Trainee Intern (Software Development)",
@@ -155,6 +207,9 @@ export const experiences: Experience[] = [
       "Deployed and configured annotation platforms (Label Studio and CVAT) on Ubuntu using Docker, and explored open-source models like Qwen2.5-VL-3B and Grounding DINO with supporting Colab notebooks and documentation.",
     ],
     tags: ["Label Studio", "CVAT", "Fiji/ImageJ", "Docker", "Python", "Qwen2.5-VL"],
+    station: 0.62,
+    metric: "CV",
+    metricLabel: "Vision annotation pipelines",
   },
   {
     role: "Trainee Intern",
@@ -169,60 +224,86 @@ export const experiences: Experience[] = [
       "Conducted structured testing and error analysis, while maintaining clear documentation of experiment setups, code, and results to support reproducibility and improvements.",
     ],
     tags: ["Librosa", "DeepFilterNet", "SepFormer", "Deep Learning"],
+    station: 0.28,
+    metric: "DL",
+    metricLabel: "Deep learning foundations",
   },
 ];
 
-export const skillGroups = [
+/* ───────────────────────────── SKILLS ─────────────────────────────
+ * Logos resolve through <SkillLogo/> (react-icons Devicon/Simple Icons,
+ * with hand-drawn brand marks for logos no longer in the icon sets).
+ * Headings are copied verbatim from the old portfolio.
+ * ─────────────────────────────────────────────────────────────────── */
+
+export type Skill = { name: string; logo: string };
+
+export const skillGroups: { title: string; skills: Skill[] }[] = [
   {
-    title: "Programming & Query Languages",
-    skills: ["Python", "SQL"],
+    title: "Programming Languages & Query Languages",
+    skills: [
+      { name: "Python", logo: "python" },
+      { name: "SQL", logo: "sql" },
+    ],
   },
   {
     title: "Databases & SQL Engines",
-    skills: ["PostgreSQL", "MySQL"],
+    skills: [
+      { name: "PostgreSQL", logo: "postgresql" },
+      { name: "MySQL", logo: "mysql" },
+    ],
   },
   {
     title: "Core Python Libraries",
     skills: [
-      "NumPy",
-      "Pandas",
-      "Matplotlib",
-      "Seaborn",
-      "scikit-learn",
-      "TensorFlow",
-      "PyTorch",
-      "OpenCV",
-      "Librosa",
+      { name: "NumPy", logo: "numpy" },
+      { name: "Pandas", logo: "pandas" },
+      { name: "Matplotlib", logo: "matplotlib" },
+      { name: "Seaborn", logo: "seaborn" },
+      { name: "scikit-learn", logo: "scikitlearn" },
+      { name: "TensorFlow", logo: "tensorflow" },
+      { name: "PyTorch", logo: "pytorch" },
+      { name: "OpenCV", logo: "opencv" },
+      { name: "Librosa", logo: "librosa" },
     ],
   },
   {
     title: "Statistical & Machine Learning",
     skills: [
-      "Supervised Learning",
-      "Unsupervised Learning",
-      "Statistical Analysis",
-      "Model Evaluation & Validation",
+      { name: "Supervised Learning", logo: "supervised" },
+      { name: "Unsupervised Learning", logo: "unsupervised" },
+      { name: "Statistical Analysis", logo: "stats" },
+      { name: "Model Evaluation & Validation", logo: "validation" },
     ],
   },
   {
     title: "Business Intelligence & Data Visualization",
-    skills: ["Excel", "Spreadsheet", "Power BI", "Tableau"],
+    skills: [
+      { name: "Excel", logo: "excel" },
+      { name: "Spreadsheet", logo: "spreadsheet" },
+      { name: "Power BI", logo: "powerbi" },
+      { name: "Tableau", logo: "tableau" },
+    ],
   },
   {
     title: "Development Environments & IDEs",
     skills: [
-      "Visual Studio Code",
-      "PyCharm",
-      "Jupyter Notebook",
-      "Google Colab",
-      "StarUML",
-      "Weka",
-      "GitHub",
+      { name: "Visual Studio Code", logo: "vscode" },
+      { name: "PyCharm", logo: "pycharm" },
+      { name: "Jupyter Notebook", logo: "jupyter" },
+      { name: "Google Colab", logo: "colab" },
+      { name: "StarUML", logo: "staruml" },
+      { name: "Weka", logo: "weka" },
+      { name: "GitHub", logo: "github" },
     ],
   },
   {
     title: "Visual Data Annotation Stack",
-    skills: ["CVAT", "Fiji", "Label Studio"],
+    skills: [
+      { name: "CVAT", logo: "cvat" },
+      { name: "Fiji", logo: "fiji" },
+      { name: "Label Studio", logo: "labelstudio" },
+    ],
   },
 ];
 
@@ -242,7 +323,8 @@ export const education: Education[] = [
     period: "Sep 2023 — Jun 2025",
     scoreLabel: "CGPA",
     score: "7.96",
-    resultUrl: "https://drive.google.com/file/d/1gGVP4eCzIvwUSB4feYYVD3vI8-7dhRsk/view?usp=sharing",
+    resultUrl:
+      "https://drive.google.com/file/d/1gGVP4eCzIvwUSB4feYYVD3vI8-7dhRsk/view?usp=sharing",
   },
   {
     degree: "Bachelor of Computer Applications (BCA)",
@@ -259,7 +341,8 @@ export const education: Education[] = [
     period: "2020",
     scoreLabel: "PERCENTAGE",
     score: "77.4%",
-    resultUrl: "https://drive.google.com/file/d/1bsX_-FfvwiFkc93iRzhsQYrP1rJA_MRV/view?usp=sharing",
+    resultUrl:
+      "https://drive.google.com/file/d/1bsX_-FfvwiFkc93iRzhsQYrP1rJA_MRV/view?usp=sharing",
   },
   {
     degree: "10th Boards (WBBSE)",
@@ -267,270 +350,268 @@ export const education: Education[] = [
     period: "2018",
     scoreLabel: "PERCENTAGE",
     score: "66.6%",
-    resultUrl: "https://drive.google.com/file/d/11-8Yp5sBTch6rHP6pEpz8KtyDLtO_i5Y/view?usp=sharing",
+    resultUrl:
+      "https://drive.google.com/file/d/11-8Yp5sBTch6rHP6pEpz8KtyDLtO_i5Y/view?usp=sharing",
   },
 ];
 
+/* ──────────────────────────── PROJECTS ────────────────────────────
+ * Tags mirror the old portfolio's filter tabs (All / End to End /
+ * Excel / Power BI / SQL / Python). linkedinUrl defaults to the
+ * LinkedIn profile — paste per-project post URLs any time.
+ * ─────────────────────────────────────────────────────────────────── */
+
 export type Project = {
   title: string;
-  category: "Analytics & BI" | "SQL & Data" | "Machine Learning" | "AI & NLP" | "Tools & Web";
+  tags: string[];
   year: string;
   tech: string[];
   description: string;
-  url: string;
+  githubUrl: string;
+  linkedinUrl: string;
+  image: string;
   featured?: boolean;
 };
 
-export const projectCategories = [
-  "All",
-  "Analytics & BI",
-  "SQL & Data",
-  "Machine Learning",
-  "AI & NLP",
-  "Tools & Web",
-] as const;
+export const projectTags = ["All", "End to End", "Excel", "Power BI", "SQL", "Python"];
+
+const LI = "https://www.linkedin.com/in/bhaskar-pal-2k02/";
+
+const P = (
+  title: string,
+  tags: string[],
+  year: string,
+  tech: string[],
+  description: string,
+  repo: string,
+  featured = false,
+): Project => ({
+  title,
+  tags,
+  year,
+  tech,
+  description,
+  githubUrl: `https://github.com/bhaskarpal1707/${repo}`,
+  linkedinUrl: LI,
+  image: `https://opengraph.githubassets.com/1/bhaskarpal1707/${repo}`,
+  featured,
+});
 
 export const projects: Project[] = [
-  {
-    title: "BanglaVLM",
-    category: "AI & NLP",
-    year: "2026",
-    tech: ["PyTorch", "VLM", "Fine-tuning", "Bangla NLP"],
-    description:
-      "Fine-tuning vision-language models for Bengali — building low-resource multimodal understanding for one of the world's most under-served language communities.",
-    url: "https://github.com/bhaskarpal1707/BanglaVLM",
-    featured: true,
-  },
-  {
-    title: "PhonePe Transaction Analysis",
-    category: "Analytics & BI",
-    year: "2026",
-    tech: ["Power BI", "DAX", "Excel"],
-    description:
-      "Interactive Power BI dashboard analyzing PhonePe transaction trends across India — volume, category mix, and state-level growth patterns at a glance.",
-    url: "https://github.com/bhaskarpal1707/phonepe-analysis-powerbi",
-    featured: true,
-  },
-  {
-    title: "Customer Churn Analysis",
-    category: "Machine Learning",
-    year: "2026",
-    tech: ["Python", "scikit-learn", "Pandas", "Seaborn"],
-    description:
-      "End-to-end churn prediction pipeline — EDA, feature engineering, and model evaluation to surface the retention levers that matter most.",
-    url: "https://github.com/bhaskarpal1707/customers-churn-analysis-python",
-    featured: true,
-  },
-  {
-    title: "Vendor Performance Analysis",
-    category: "SQL & Data",
-    year: "2025",
-    tech: ["SQL", "Python", "Power BI", "Pandas"],
-    description:
-      "Full-stack retail analytics: SQL pipelines for ingestion, Python for profit-margin and inventory-turn analysis, and a Power BI layer for vendor scorecards.",
-    url: "https://github.com/bhaskarpal1707/vendor-performance-analysis-sql-python-powerbi",
-    featured: true,
-  },
-  {
-    title: "Blinkit Sales Analysis",
-    category: "SQL & Data",
-    year: "2025",
-    tech: ["MySQL", "SQL", "Workbench"],
-    description:
-      "Comprehensive SQL analysis of Blinkit's sales performance, customer satisfaction, and inventory distribution — Total Sales, Avg Sales, Item Count and Avg Rating KPIs.",
-    url: "https://github.com/bhaskarpal1707/Blinkit-Analysis-SQL-Project",
-    featured: true,
-  },
-  {
-    title: "Spotify Dashboard — Power BI",
-    category: "Analytics & BI",
-    year: "2025",
-    tech: ["Power BI", "DAX", "Data Modeling"],
-    description:
-      "A music intelligence dashboard: streams, artists, and listening trends rendered as an interactive Power BI experience.",
-    url: "https://github.com/bhaskarpal1707/spotify-analysis-dashboard-powerbi",
-    featured: true,
-  },
-  {
-    title: "BanglaSum — Qwen3 · XLSum",
-    category: "AI & NLP",
-    year: "2026",
-    tech: ["Qwen3", "LLM", "Fine-tuning", "Summarization"],
-    description:
-      "Adapting Qwen3 for Bengali abstractive summarization on XLSum — dataset curation, LoRA fine-tuning and ROUGE-driven evaluation.",
-    url: "https://github.com/bhaskarpal1707/BanglaSum-Qwen3-XLSum",
-  },
-  {
-    title: "LaTeX OCR — Qwen3.5 Fine-tune",
-    category: "AI & NLP",
-    year: "2026",
-    tech: ["Qwen3.5", "OCR", "Vision", "LaTeX"],
-    description:
-      "Fine-tuning a multimodal LLM to read rendered math and emit clean LaTeX — an experiment in precise, structured visual transcription.",
-    url: "https://github.com/bhaskarpal1707/qwen3.5-latex-ocr-finetune-v2",
-  },
-  {
-    title: "Language Detection App",
-    category: "AI & NLP",
-    year: "2026",
-    tech: ["Python", "Naive Bayes", "Streamlit", "NLP"],
-    description:
-      "A Streamlit web app that classifies text across languages using CountVectorizer + Naive Bayes — deployed for instant, interactive inference.",
-    url: "https://github.com/bhaskarpal1707/Language-Detection-App",
-  },
-  {
-    title: "E-commerce Funnel Analysis",
-    category: "Analytics & BI",
-    year: "2026",
-    tech: ["Python", "Pandas", "Plotly"],
-    description:
-      "Tracing users from visit to purchase — funnel drop-off analysis that quantifies where conversion leaks and what to fix first.",
-    url: "https://github.com/bhaskarpal1707/e-commerce-funnel-analysis",
-  },
-  {
-    title: "Banking Churn & Risk Analysis",
-    category: "Analytics & BI",
-    year: "2025",
-    tech: ["Excel", "Power BI", "Risk Analytics"],
-    description:
-      "Banking customer churn and credit-risk analysis blending Excel modeling with Power BI storytelling for account-retention strategy.",
-    url: "https://github.com/bhaskarpal1707/banking-customers-churn-and-risk-analysis-excel-powerbi",
-  },
-  {
-    title: "Airbnb Data Analysis",
-    category: "Analytics & BI",
-    year: "2025",
-    tech: ["Python", "Pandas", "NumPy", "Visualization"],
-    description:
-      "Exploratory analysis of Airbnb listings — pricing dynamics, availability patterns, and location-driven demand insights.",
-    url: "https://github.com/bhaskarpal1707/Airbnb-Data-Analysis-Project-",
-  },
-  {
-    title: "Online Courses Analysis",
-    category: "Analytics & BI",
-    year: "2025",
-    tech: ["Power BI", "Excel"],
-    description:
-      "Market analysis of online learning platforms — enrollment trends, pricing tiers, and category performance in a multi-page dashboard.",
-    url: "https://github.com/bhaskarpal1707/online-courses-analysis-powerbi",
-  },
-  {
-    title: "Hospital ER Analysis",
-    category: "Analytics & BI",
-    year: "2025",
-    tech: ["Excel", "Dashboards", "Pivot Tables"],
-    description:
-      "Emergency-room operations dashboard in advanced Excel — patient flow, wait times, and admission patterns for capacity decisions.",
-    url: "https://github.com/bhaskarpal1707/Hospital-Emergency-Room-Analysis-Using_Excel",
-  },
-  {
-    title: "Spotify Data Analysis — SQL",
-    category: "SQL & Data",
-    year: "2025",
-    tech: ["PostgreSQL", "SQL", "Window Functions"],
-    description:
-      "Query-driven analysis of a Spotify dataset — advanced joins, CTEs, and window functions to rank artists, tracks, and engagement.",
-    url: "https://github.com/bhaskarpal1707/Spotify-Data-Analysis-using-SQL",
-  },
-  {
-    title: "Zepto Inventory Analysis",
-    category: "SQL & Data",
-    year: "2025",
-    tech: ["MySQL", "SQL", "Data Cleaning"],
-    description:
-      "Rapid-fire SQL exploration of Zepto's quick-commerce catalog — pricing outliers, discount structure, and inventory signals.",
-    url: "https://github.com/bhaskarpal1707/Zepto-Analysis-SQL-Project",
-  },
-  {
-    title: "Walmart Sales Analysis",
-    category: "SQL & Data",
-    year: "2025",
-    tech: ["Python", "Pandas", "SQL"],
-    description:
-      "Holiday-vs-weekday sales patterns across branches — feature engineering plus SQL checks to explain revenue swings.",
-    url: "https://github.com/bhaskarpal1707/Walmart_Sales_Analysis",
-  },
-  {
-    title: "Boston House Price Prediction",
-    category: "Machine Learning",
-    year: "2025",
-    tech: ["scikit-learn", "Regression", "Python"],
-    description:
-      "Classic regression benchmark rebuilt properly — EDA, correlation pruning, and regularized models with honest evaluation.",
-    url: "https://github.com/bhaskarpal1707/boston-house-pricing-prediction-analysis",
-  },
-  {
-    title: "Churn Insights — Telecom",
-    category: "Machine Learning",
-    year: "2025",
-    tech: ["Python", "EDA", "Classification"],
-    description:
-      "Identified churn drivers: month-to-month contracts (42% churn), electronic checks (45%), first-year customers (50%) — analysis turned into retention actions.",
-    url: "https://github.com/bhaskarpal1707/Customer-Churn-Analysis",
-  },
-  {
-    title: "Uber Data Analysis",
-    category: "Machine Learning",
-    year: "2025",
-    tech: ["Python", "Pandas", "Folium"],
-    description:
-      "Ride-request exploration — hourly demand heat, peak-day patterns, and geographic pickup distributions visualized on maps.",
-    url: "https://github.com/bhaskarpal1707/Uber-Data-Analysis",
-  },
-  {
-    title: "Road Accident Analysis",
-    category: "Analytics & BI",
-    year: "2025",
-    tech: ["Excel", "Dashboarding", "Data Cleaning"],
-    description:
-      "Advanced Excel project covering the full chain — cleaning, processing, and an interactive accident-severity dashboard.",
-    url: "https://github.com/bhaskarpal1707/Road-Accident-Analysis-Excel-",
-  },
-  {
-    title: "Google Search Analysis",
-    category: "Machine Learning",
-    year: "2025",
-    tech: ["Python", "Pytrends", "Visualization"],
-    description:
-      "Trend mining on Google search interest — comparing query topics over time to read the public's data-science curiosity curve.",
-    url: "https://github.com/bhaskarpal1707/Google-Search-Analysis",
-  },
-  {
-    title: "Website Performance Analysis",
-    category: "Machine Learning",
-    year: "2025",
-    tech: ["Python", "Pandas", "Analytics"],
-    description:
-      "Traffic and engagement audit — session quality, channel performance, and user-behavior signals that inform growth decisions.",
-    url: "https://github.com/bhaskarpal1707/Website-Performance-Analysis",
-  },
-  {
-    title: "NeuralCanvas",
-    category: "Tools & Web",
-    year: "2026",
-    tech: ["HTML", "Canvas", "JavaScript"],
-    description:
-      "A generative-art playground in the browser — neural-inspired visuals drawn live on HTML canvas.",
-    url: "https://github.com/bhaskarpal1707/NeuralCanvas",
-  },
-  {
-    title: "CmdHub",
-    category: "Tools & Web",
-    year: "2026",
-    tech: ["JavaScript", "Web App"],
-    description:
-      "A curated command-hub web utility — quick access to the snippets and commands used most in day-to-day work.",
-    url: "https://github.com/bhaskarpal1707/CmdHub",
-  },
-  {
-    title: "MarkForge",
-    category: "Tools & Web",
-    year: "2026",
-    tech: ["JavaScript", "Markdown", "Web App"],
-    description:
-      "A lightweight markdown forge — write, preview, and polish markdown documents in a distraction-free interface.",
-    url: "https://github.com/bhaskarpal1707/MarkForge",
-  },
+  P(
+    "BanglaVLM",
+    ["Python", "End to End"],
+    "2026",
+    ["PyTorch", "VLM", "Fine-tuning", "Bangla NLP"],
+    "Fine-tuning vision-language models for Bengali — building low-resource multimodal understanding for one of the world's most under-served language communities.",
+    "BanglaVLM",
+    true,
+  ),
+  P(
+    "PhonePe Transaction Analysis",
+    ["Power BI", "Excel"],
+    "2026",
+    ["Power BI", "DAX", "Excel"],
+    "Interactive Power BI dashboard analyzing PhonePe transaction trends across India — volume, category mix, and state-level growth patterns at a glance.",
+    "phonepe-analysis-powerbi",
+    true,
+  ),
+  P(
+    "Customer Churn Analysis",
+    ["Python", "End to End"],
+    "2026",
+    ["Python", "scikit-learn", "Pandas", "Seaborn"],
+    "End-to-end churn prediction pipeline — EDA, feature engineering, and model evaluation to surface the retention levers that matter most.",
+    "customers-churn-analysis-python",
+    true,
+  ),
+  P(
+    "Vendor Performance Analysis",
+    ["SQL", "Python", "End to End"],
+    "2025",
+    ["SQL", "Python", "Power BI", "Pandas"],
+    "Full-stack retail analytics: SQL pipelines for ingestion, Python for profit-margin and inventory-turn analysis, and a Power BI layer for vendor scorecards.",
+    "vendor-performance-analysis-sql-python-powerbi",
+    true,
+  ),
+  P(
+    "Blinkit Sales Analysis",
+    ["SQL"],
+    "2025",
+    ["MySQL", "SQL", "Workbench"],
+    "Comprehensive SQL analysis of Blinkit's sales performance, customer satisfaction, and inventory distribution — Total Sales, Avg Sales, Item Count and Avg Rating KPIs.",
+    "Blinkit-Analysis-SQL-Project",
+    true,
+  ),
+  P(
+    "Spotify Dashboard — Power BI",
+    ["Power BI"],
+    "2025",
+    ["Power BI", "DAX", "Data Modeling"],
+    "A music intelligence dashboard: streams, artists, and listening trends rendered as an interactive Power BI experience.",
+    "spotify-analysis-dashboard-powerbi",
+    true,
+  ),
+  P(
+    "BanglaSum — Qwen3 · XLSum",
+    ["Python", "End to End"],
+    "2026",
+    ["Qwen3", "LLM", "Fine-tuning", "Summarization"],
+    "Adapting Qwen3 for Bengali abstractive summarization on XLSum — dataset curation, LoRA fine-tuning and ROUGE-driven evaluation.",
+    "BanglaSum-Qwen3-XLSum",
+  ),
+  P(
+    "LaTeX OCR — Qwen3.5 Fine-tune",
+    ["Python"],
+    "2026",
+    ["Qwen3.5", "OCR", "Vision", "LaTeX"],
+    "Fine-tuning a multimodal LLM to read rendered math and emit clean LaTeX — an experiment in precise, structured visual transcription.",
+    "qwen3.5-latex-ocr-finetune-v2",
+  ),
+  P(
+    "Language Detection App",
+    ["Python"],
+    "2026",
+    ["Python", "Naive Bayes", "Streamlit", "NLP"],
+    "A Streamlit web app that classifies text across languages using CountVectorizer + Naive Bayes — deployed for instant, interactive inference.",
+    "Language-Detection-App",
+  ),
+  P(
+    "E-commerce Funnel Analysis",
+    ["Python"],
+    "2026",
+    ["Python", "Pandas", "Plotly"],
+    "Tracing users from visit to purchase — funnel drop-off analysis that quantifies where conversion leaks and what to fix first.",
+    "e-commerce-funnel-analysis",
+  ),
+  P(
+    "Banking Churn & Risk Analysis",
+    ["Excel", "Power BI"],
+    "2025",
+    ["Excel", "Power BI", "Risk Analytics"],
+    "Banking customer churn and credit-risk analysis blending Excel modeling with Power BI storytelling for account-retention strategy.",
+    "banking-customers-churn-and-risk-analysis-excel-powerbi",
+  ),
+  P(
+    "Airbnb Data Analysis",
+    ["Python", "End to End"],
+    "2025",
+    ["Python", "Pandas", "NumPy", "Visualization"],
+    "Exploratory analysis of Airbnb listings — pricing dynamics, availability patterns, and location-driven demand insights.",
+    "Airbnb-Data-Analysis-Project-",
+  ),
+  P(
+    "Online Courses Analysis",
+    ["Power BI"],
+    "2025",
+    ["Power BI", "Excel"],
+    "Market analysis of online learning platforms — enrollment trends, pricing tiers, and category performance in a multi-page dashboard.",
+    "online-courses-analysis-powerbi",
+  ),
+  P(
+    "Hospital ER Analysis",
+    ["Excel"],
+    "2025",
+    ["Excel", "Dashboards", "Pivot Tables"],
+    "Emergency-room operations dashboard in advanced Excel — patient flow, wait times, and admission patterns for capacity decisions.",
+    "Hospital-Emergency-Room-Analysis-Using_Excel",
+  ),
+  P(
+    "Spotify Data Analysis — SQL",
+    ["SQL"],
+    "2025",
+    ["PostgreSQL", "SQL", "Window Functions"],
+    "Query-driven analysis of a Spotify dataset — advanced joins, CTEs, and window functions to rank artists, tracks, and engagement.",
+    "Spotify-Data-Analysis-using-SQL",
+  ),
+  P(
+    "Zepto Inventory Analysis",
+    ["SQL"],
+    "2025",
+    ["MySQL", "SQL", "Data Cleaning"],
+    "Rapid-fire SQL exploration of Zepto's quick-commerce catalog — pricing outliers, discount structure, and inventory signals.",
+    "Zepto-Analysis-SQL-Project",
+  ),
+  P(
+    "Walmart Sales Analysis",
+    ["SQL", "Python"],
+    "2025",
+    ["Python", "Pandas", "SQL"],
+    "Holiday-vs-weekday sales patterns across branches — feature engineering plus SQL checks to explain revenue swings.",
+    "Walmart_Sales_Analysis",
+  ),
+  P(
+    "Boston House Price Prediction",
+    ["Python"],
+    "2025",
+    ["scikit-learn", "Regression", "Python"],
+    "Classic regression benchmark rebuilt properly — EDA, correlation pruning, and regularized models with honest evaluation.",
+    "boston-house-pricing-prediction-analysis",
+  ),
+  P(
+    "Churn Insights — Telecom",
+    ["Python"],
+    "2025",
+    ["Python", "EDA", "Classification"],
+    "Identified churn drivers: month-to-month contracts (42% churn), electronic checks (45%), first-year customers (50%) — analysis turned into retention actions.",
+    "Customer-Churn-Analysis",
+  ),
+  P(
+    "Uber Data Analysis",
+    ["Python"],
+    "2025",
+    ["Python", "Pandas", "Folium"],
+    "Ride-request exploration — hourly demand heat, peak-day patterns, and geographic pickup distributions visualized on maps.",
+    "Uber-Data-Analysis",
+  ),
+  P(
+    "Road Accident Analysis",
+    ["Excel"],
+    "2025",
+    ["Excel", "Dashboarding", "Data Cleaning"],
+    "Advanced Excel project covering the full chain — cleaning, processing, and an interactive accident-severity dashboard.",
+    "Road-Accident-Analysis-Excel-",
+  ),
+  P(
+    "Google Search Analysis",
+    ["Python"],
+    "2025",
+    ["Python", "Pytrends", "Visualization"],
+    "Trend mining on Google search interest — comparing query topics over time to read the public's data-science curiosity curve.",
+    "Google-Search-Analysis",
+  ),
+  P(
+    "Website Performance Analysis",
+    ["Python"],
+    "2025",
+    ["Python", "Pandas", "Analytics"],
+    "Traffic and engagement audit — session quality, channel performance, and user-behavior signals that inform growth decisions.",
+    "Website-Performance-Analysis",
+  ),
+  P(
+    "NeuralCanvas",
+    ["End to End"],
+    "2026",
+    ["HTML", "Canvas", "JavaScript"],
+    "A generative-art playground in the browser — neural-inspired visuals drawn live on HTML canvas.",
+    "NeuralCanvas",
+  ),
+  P(
+    "CmdHub",
+    ["End to End"],
+    "2026",
+    ["JavaScript", "Web App"],
+    "A curated command-hub web utility — quick access to the snippets and commands used most in day-to-day work.",
+    "CmdHub",
+  ),
+  P(
+    "MarkForge",
+    ["End to End"],
+    "2026",
+    ["JavaScript", "Markdown", "Web App"],
+    "A lightweight markdown forge — write, preview, and polish markdown documents in a distraction-free interface.",
+    "MarkForge",
+  ),
 ];
 
 export type Certification = {
@@ -538,60 +619,86 @@ export type Certification = {
   issuer: string;
   year: string;
   url: string;
+  issuerUrl: string;
+  image: string;
+  /** Short tag rendered as a status line, like a credential file row. */
+  credId: string;
 };
 
-/**
- * NOTE: certifications mirror your old portfolio / LinkedIn.
- * Edit this list anytime — links currently point to your LinkedIn profile.
- */
+/** NOTE: paste each certificate's real credential URL + image below —
+ *  urls currently default to your LinkedIn profile. */
 export const certifications: Certification[] = [
   {
     title: "Harnessing the Power of Data with Power BI",
     issuer: "Microsoft",
     year: "2025",
     url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+    issuerUrl: "https://www.microsoft.com/en-us/power-platform/products/power-bi",
+    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/phonepe-analysis-powerbi",
+    credId: "MSFT-PBI-2025",
   },
   {
     title: "Google Data Analytics Professional Certificate",
     issuer: "Google",
     year: "2025",
     url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+    issuerUrl: "https://grow.google/certificates/data-analytics/",
+    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Google-Search-Analysis",
+    credId: "GOOG-DA-2025",
   },
   {
     title: "SQL (Advanced) Certificate",
     issuer: "HackerRank",
     year: "2025",
     url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+    issuerUrl: "https://www.hackerrank.com/skills-verification/sql_advanced",
+    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Blinkit-Analysis-SQL-Project",
+    credId: "HR-SQLADV-2025",
   },
   {
     title: "Python for Data Science, AI & Development",
     issuer: "IBM · Coursera",
     year: "2025",
     url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+    issuerUrl: "https://www.coursera.org/learn/python-for-applied-data-science-ai",
+    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Language-Detection-App",
+    credId: "IBM-PYDS-2025",
   },
   {
     title: "Tableau Desktop Specialist Training",
     issuer: "Tableau",
     year: "2025",
     url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+    issuerUrl: "https://www.tableau.com/learn/certification",
+    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/spotify-analysis-dashboard-powerbi",
+    credId: "TDA-SPEC-2025",
   },
   {
     title: "Machine Learning Specialization",
     issuer: "DeepLearning.AI",
     year: "2025",
     url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+    issuerUrl: "https://www.deeplearning.ai/courses/machine-learning-specialization/",
+    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/boston-house-pricing-prediction-analysis",
+    credId: "DLAI-MLS-2025",
   },
   {
     title: "Excel Skills for Business",
     issuer: "Macquarie University · Coursera",
     year: "2024",
     url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+    issuerUrl: "https://www.coursera.org/specializations/excel",
+    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Hospital-Emergency-Room-Analysis-Using_Excel",
+    credId: "MQ-EXCEL-2024",
   },
   {
     title: "Supervised Machine Learning: Regression & Classification",
     issuer: "DeepLearning.AI · Stanford Online",
     year: "2024",
     url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+    issuerUrl: "https://www.deeplearning.ai/courses/machine-learning-specialization/",
+    image: "https://opengraph.githubassets.com/1/bhaskarpal1707/Customer-Churn-Analysis",
+    credId: "DLAI-SML-2024",
   },
 ];
 

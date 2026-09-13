@@ -1,6 +1,7 @@
 import { Link } from "react-router";
-import { ArrowUpRight, Mail, MapPin, Phone, Github, Linkedin } from "lucide-react";
-import { profile, fileMeta } from "@/data/portfolio";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { profile, socials, fileMeta } from "@/data/portfolio";
+import Socials from "@/components/portfolio/BrandIcons";
 
 export default function Footer() {
   return (
@@ -22,6 +23,7 @@ export default function Footer() {
               Open to collaborations, career opportunities, and data-driven projects with
               HR, managers, IT, and business professionals.
             </p>
+            <Socials className="mt-6" />
           </div>
 
           <div className="space-y-3 text-sm">
@@ -43,26 +45,6 @@ export default function Footer() {
               <MapPin className="h-4 w-4" />
               {profile.location}
             </p>
-            <div className="flex gap-5 pt-2">
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="GitHub"
-              >
-                <Github className="h-4 w-4" />
-              </a>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-            </div>
           </div>
         </div>
 
@@ -72,7 +54,9 @@ export default function Footer() {
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
             UNSAVED CHANGES: NONE — ALWAYS SHIPPING
           </span>
-          <span>{fileMeta.handle}</span>
+          <span>
+            {socials.length} NETWORKS · {fileMeta.handle}
+          </span>
         </div>
       </div>
     </footer>
