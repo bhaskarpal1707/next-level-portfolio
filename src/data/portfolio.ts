@@ -69,7 +69,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
   avatar: portraitImg,
   aboutImage: aboutImg,
-  resume: "resume.pdf",
+  resume: "/resume.pdf",
   /** Leave "" to auto-probe: /video.mp4 in `public/`, then the old portfolio's
    *  video paths. Or set an absolute URL to your reel here. */
   videoUrl: "",
