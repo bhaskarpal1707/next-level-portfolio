@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navLinks, profile } from "@/data/portfolio";
+import { navLinks, profile, fileMeta } from "@/data/portfolio";
 
+/**
+ * File-chrome header: the site presents itself as an open data file.
+ * Left = filename + status dot, center = sheet nav, right = meta + resume.
+ */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -40,18 +44,29 @@ export default function Navbar() {
         }`}
       >
         <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 sm:px-10">
-          <Link to="/" className="font-display text-sm font-semibold tracking-[0.22em]" aria-label="Home">
-            BHASKAR<span className="text-primary">.PAL</span>
+          <Link to="/" className="group flex items-center gap-2.5" aria-label="Home">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-50" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+            </span>
+            <span className="font-mono2 text-xs font-medium tracking-[0.18em] text-foreground">
+              {fileMeta.filename}
+            </span>
+            <span className="hidden font-mono2 text-[10px] tracking-[0.15em] text-muted-foreground sm:inline">
+              — {fileMeta.handle}
+            </span>
           </Link>
 
-          <div className="hidden items-center gap-7 lg:flex">
+          <div className="hidden items-center gap-6 lg:flex">
             {navLinks.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 className={({ isActive }) =>
                   `text-[13px] transition-colors duration-300 ${
-                    isActive ? "link-active text-foreground" : "link-sweep text-muted-foreground hover:text-foreground"
+                    isActive
+                      ? "link-active text-foreground"
+                      : "link-sweep text-muted-foreground hover:text-foreground"
                   }`
                 }
               >
@@ -60,12 +75,15 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
+            <span className="hidden font-mono2 text-[10px] tracking-[0.2em] text-muted-foreground xl:inline">
+              {fileMeta.city}
+            </span>
             <a
               href={profile.resume}
               target="_blank"
               rel="noreferrer"
-              className="hidden text-[13px] text-muted-foreground transition-colors hover:text-foreground sm:block"
+              className="btn-primary hidden rounded-md px-3.5 py-2 text-[13px] font-medium text-foreground sm:block"
             >
               Resume ↗
             </a>
@@ -114,7 +132,7 @@ export default function Navbar() {
               ))}
             </div>
             <div className="px-8 pb-10 font-mono2 text-xs tracking-widest text-muted-foreground">
-              KOLKATA · 22.5726° N, 88.3639° E
+              {fileMeta.city} · 22.5726° N, 88.3639° E
             </div>
           </motion.div>
         )}

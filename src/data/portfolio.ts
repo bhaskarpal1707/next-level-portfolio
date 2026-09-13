@@ -71,6 +71,16 @@ export const profile = {
   videoUrl: "",
 };
 
+/** File-chrome metadata shown around the hero (the "open data file" feel). */
+export const fileMeta = {
+  filename: "PORTFOLIO.PARQUET",
+  dims: "1920 × ∞ px",
+  depth: "RGB / 32-bit",
+  updated: "SEP 2026",
+  handle: "@bhaskarpal1707",
+  city: "KOLKATA, IN",
+};
+
 export const navLinks = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
@@ -590,6 +600,42 @@ export const stats = [
   { value: 3, suffix: "", label: "Research internships" },
   { value: 8, suffix: "+", label: "Certifications" },
   { value: 5, suffix: "+", label: "Years of code" },
+];
+
+/** Experience as file versions — the design-file metaphor for a data career. */
+export const versions = [
+  {
+    tag: "V3 · 26—now",
+    org: "Indian Statistical Institute, Kolkata",
+    role: "Research Intern",
+    period: "Apr 2026 — Present",
+    orgUrl: "https://www.isical.ac.in/",
+    note: "Multilingual speech processing & ASR for low-resource Bengali — PyTorch, fairseq2, WER evaluation.",
+  },
+  {
+    tag: "V2 · 26",
+    org: "IDEAS Technology Innovation Hub @ ISI",
+    role: "Trainee Intern (Software Development)",
+    period: "Jan 2026 — Mar 2026",
+    orgUrl: "https://www.ideas-tih.org/",
+    note: "Keypoint annotation, object tracking & segmentation pipelines — Label Studio, CVAT, Fiji, Docker.",
+  },
+  {
+    tag: "V1 · 25",
+    org: "Indian Statistical Institute, Kolkata",
+    role: "Trainee Intern",
+    period: "Nov 2025 — Dec 2025",
+    orgUrl: "https://www.isical.ac.in/",
+    note: "Deep-learning ASR under faculty supervision — Librosa, DeepFilterNet, SepFormer experiments.",
+  },
+  {
+    tag: "A0 · always",
+    org: "Foundations",
+    role: "Curiosity · Craft · Clean data",
+    period: "",
+    orgUrl: "",
+    note: "The base layer every version compiles on top of.",
+  },
 ];
 
 export const marqueeSkills = [

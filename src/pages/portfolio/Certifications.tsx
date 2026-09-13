@@ -7,7 +7,7 @@ export default function Certifications() {
     <div className="pt-32">
       <section className="mx-auto max-w-6xl px-6 sm:px-10">
         <SectionHeading
-          eyebrow="Certifications"
+          eyebrow="08 — Recognition"
           title={
             <>
               Verified, <span className="text-primary">always learning</span>

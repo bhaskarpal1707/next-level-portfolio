@@ -46,40 +46,40 @@
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
-/* MINIMAL EDITORIAL THEME — ink on paper, hairlines, one restrained accent */
+/* DATA-FILE THEME — ink dark, hairlines, one ember accent, film grain */
 :root {
   --radius: 0.5rem;
-  --background: #111110;
+  --background: #0f0e0c;
   --foreground: #ece9e2;
-  --card: #161614;
+  --card: #15140f;
   --card-foreground: #ece9e2;
-  --popover: #161614;
+  --popover: #15140f;
   --popover-foreground: #ece9e2;
-  --primary: #d97706;
-  --primary-foreground: #111110;
-  --secondary: #1d1d1a;
+  --primary: #e5760d;
+  --primary-foreground: #0f0e0c;
+  --secondary: #1b1a15;
   --secondary-foreground: #ece9e2;
-  --muted: #1a1a18;
-  --muted-foreground: #9b968c;
-  --accent: #22221e;
+  --muted: #1a1915;
+  --muted-foreground: #9a9488;
+  --accent: #23221b;
   --accent-foreground: #ece9e2;
   --destructive: #f87171;
   --border: rgba(236, 233, 226, 0.1);
   --input: rgba(236, 233, 226, 0.14);
-  --ring: rgba(217, 119, 6, 0.4);
-  --chart-1: #d97706;
+  --ring: rgba(229, 118, 13, 0.45);
+  --chart-1: #e5760d;
   --chart-2: #a8a29e;
   --chart-3: #78716c;
   --chart-4: #57534e;
   --chart-5: #e7e5e4;
-  --sidebar: #161614;
+  --sidebar: #15140f;
   --sidebar-foreground: #ece9e2;
-  --sidebar-primary: #d97706;
-  --sidebar-primary-foreground: #111110;
-  --sidebar-accent: #22221e;
+  --sidebar-primary: #e5760d;
+  --sidebar-primary-foreground: #0f0e0c;
+  --sidebar-accent: #23221b;
   --sidebar-accent-foreground: #ece9e2;
   --sidebar-border: rgba(236, 233, 226, 0.1);
-  --sidebar-ring: rgba(217, 119, 6, 0.4);
+  --sidebar-ring: rgba(229, 118, 13, 0.45);
 }
 
 @layer base {
@@ -94,8 +94,8 @@
     overflow-x: hidden;
   }
   ::selection {
-    background: rgba(217, 119, 6, 0.25);
-    color: #fef3c7;
+    background: rgba(229, 118, 13, 0.3);
+    color: #fff7e6;
   }
   button:not([disabled]),
   [role="button"]:not([disabled]) {
@@ -125,22 +125,122 @@
   font-family: var(--font-mono);
 }
 
-/* flat paper panel — no glass, no blur, just a hairline */
+/* hairline framed panel */
 .panel {
   border: 1px solid var(--border);
   background: transparent;
 }
-.panel-hover {
-  transition:
-    border-color 0.3s ease,
-    background-color 0.3s ease;
+
+/* editorial sweep underline */
+.link-sweep {
+  position: relative;
 }
-.panel-hover:hover {
-  border-color: rgba(236, 233, 226, 0.24);
-  background: rgba(236, 233, 226, 0.02);
+.link-sweep::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-sweep:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.link-active {
+  position: relative;
+}
+.link-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: var(--primary);
 }
 
-/* marquee — kept, slowed down and dimmed for the editorial feel */
+/* ── film grain overlay (the analog layer) ── */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 40;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  animation: grain-shift 0.9s steps(4) infinite;
+}
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2%, 1%);
+  }
+  50% {
+    transform: translate(1%, -2%);
+  }
+  75% {
+    transform: translate(-1%, -1%);
+  }
+  100% {
+    transform: translate(2%, 2%);
+  }
+}
+
+/* ── cursor spotlight (follows the pointer, lights the ink) ── */
+.spotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    560px circle at var(--mx, 50%) var(--my, 30%),
+    rgba(229, 118, 13, 0.06),
+    transparent 65%
+  );
+}
+
+/* ── custom cursor: ember dot + trailing ring ── */
+@media (pointer: fine) {
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: var(--primary);
+  }
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    pointer-events: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 9999px;
+    border: 1px solid rgba(229, 118, 13, 0.45);
+    transition: width 0.25s ease, height 0.25s ease, background 0.25s ease,
+      border-color 0.25s ease;
+  }
+  .cursor-ring.is-active {
+    width: 48px;
+    height: 48px;
+    border-color: rgba(236, 233, 226, 0.35);
+    background: rgba(229, 118, 13, 0.06);
+  }
+}
+
+/* ── marquee ── */
 .marquee-track {
   display: flex;
   width: max-content;
@@ -161,7 +261,7 @@
   }
 }
 
-/* typing caret — the one flourish kept from before */
+/* ── typing caret ── */
 .type-caret::after {
   content: "";
   display: inline-block;
@@ -182,39 +282,55 @@
   }
 }
 
-/* underline sweep for text links */
-.link-sweep {
-  position: relative;
-}
-.link-sweep::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  height: 1px;
-  width: 100%;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.link-sweep:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+/* ── magnetic button (wrapper leans toward the cursor) ── */
+.magnetic {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
-/* underline that starts swept — active nav state */
-.link-active {
+/* ── primary action button — ink + ember underline ── */
+.btn-primary {
   position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
-.link-active::after {
+.btn-primary::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -3px;
-  height: 1px;
-  width: 100%;
+  inset: auto 0 0 0;
+  height: 2px;
   background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-primary:hover {
+  border-color: rgba(229, 118, 13, 0.5);
+}
+.btn-primary:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── row hover state for index lists ── */
+.row-hover {
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+.row-hover:hover {
+  background: rgba(236, 233, 226, 0.03);
+  padding-left: 0.75rem;
+}
+
+/* ── dashed "add file" tile ── */
+.tile-dashed {
+  border: 1px dashed rgba(236, 233, 226, 0.2);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.tile-dashed:hover {
+  border-color: rgba(229, 118, 13, 0.55);
+  background: rgba(229, 118, 13, 0.04);
 }
 
 @media (prefers-reduced-motion: reduce) {

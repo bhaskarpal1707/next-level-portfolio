@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { ArrowUpRight, Mail, MapPin, Phone, Github, Linkedin } from "lucide-react";
-import { profile } from "@/data/portfolio";
+import { profile, fileMeta } from "@/data/portfolio";
 
 export default function Footer() {
   return (
@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="font-mono2 text-[11px] uppercase tracking-[0.35em] text-muted-foreground">
-              Let's build something
+              End of file
             </p>
             <Link
               to="/contact"
@@ -66,10 +66,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 font-mono2 text-[11px] tracking-[0.25em] text-muted-foreground sm:flex-row">
+        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 font-mono2 text-[11px] tracking-[0.2em] text-muted-foreground sm:flex-row">
           <span>© {new Date().getFullYear()} BHASKAR PAL</span>
-          <span>KOLKATA · 22.5726° N / 88.3639° E</span>
-          <span>DESIGNED MINIMAL</span>
+          <span className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+            UNSAVED CHANGES: NONE — ALWAYS SHIPPING
+          </span>
+          <span>{fileMeta.handle}</span>
         </div>
       </div>
     </footer>
