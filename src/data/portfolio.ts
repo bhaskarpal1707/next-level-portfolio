@@ -1,0 +1,564 @@
+/**
+ * ─────────────────────────────────────────────────────────────────────────────
+ *  PORTFOLIO CONTENT — edit this file to update anything on the site.
+ *  All content extracted from bhaskarpal1707.github.io/portfolio + GitHub.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+export const profile = {
+  name: "Bhaskar Pal",
+  firstName: "Bhaskar",
+  lastName: "Pal",
+  roles: ["Data Analyst", "Data Strategist", "Insight Architect", "ML Explorer"],
+  tagline: "Turning raw numbers into growth catalysts.",
+  headline: "Data Strategist | Insight Architect | Turning Raw Numbers into Growth Catalysts",
+  about:
+    "I transform raw data into clear, actionable stories that empower smarter decisions. As a data professional, I bridge the gap between complex numbers and strategic business moves. My passion? Turning chaos into clarity — so leaders can act with confidence.",
+  location: "Kolkata, West Bengal, India",
+  email: "bhaskarpal.official@gmail.com",
+  phone: "+91-73188285978",
+  github: "https://github.com/bhaskarpal1707",
+  linkedin: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+  avatar: "https://avatars.githubusercontent.com/u/98514594?v=4",
+  aboutImage: "https://bhaskarpal1707.github.io/portfolio/assets/img/image%202.jpg",
+  resume: "resume.pdf",
+};
+
+export const navLinks = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Experience", to: "/experience" },
+  { label: "Projects", to: "/projects" },
+  { label: "Education", to: "/education" },
+  { label: "Certifications", to: "/certifications" },
+  { label: "Contact", to: "/contact" },
+];
+
+export const impactPoints = [
+  {
+    title: "Visualize Insights",
+    body: "Crafting intuitive Power BI dashboards that make trends leap off the screen.",
+    glyph: "◈",
+  },
+  {
+    title: "Uncover Hidden Opportunities",
+    body: "Mining data with SQL / Python to reveal growth levers others miss.",
+    glyph: "◇",
+  },
+  {
+    title: "Build Trusted Foundations",
+    body: "Transforming messy data into clean, analysis-ready models.",
+    glyph: "◆",
+  },
+  {
+    title: "Deliver Actionable Intelligence",
+    body: "Designing reports that turn insights into strategic next steps.",
+    glyph: "✦",
+  },
+  {
+    title: "Predictive Power",
+    body: "Building ML models to make predictions and reveal hidden patterns.",
+    glyph: "✧",
+  },
+];
+
+export type Experience = {
+  role: string;
+  period: string;
+  org: string;
+  orgUrl: string;
+  points: string[];
+  tags: string[];
+};
+
+export const experiences: Experience[] = [
+  {
+    role: "Research Intern",
+    period: "Apr 2026 — Present",
+    org: "Indian Statistical Institute, Kolkata",
+    orgUrl: "https://www.isical.ac.in/",
+    points: [
+      "Conducted research in multilingual speech processing and automatic speech recognition (ASR), adapting pretrained speech models for low-resource Bengali using Python, PyTorch, and fairseq2.",
+      "Designed and executed experiments involving speech dataset preparation, audio preprocessing, model fine-tuning, and Word Error Rate (WER) evaluation across multiple model configurations.",
+      "Expanded a noisy, real-world Bengali speech corpus by curating and validating additional speech samples, while performing error analysis, model evaluation, and documenting experimental findings to support ongoing ASR research.",
+    ],
+    tags: ["Python", "PyTorch", "fairseq2", "ASR", "WER"],
+  },
+  {
+    role: "Trainee Intern (Software Development)",
+    period: "Jan 2026 — Mar 2026",
+    org: "IDEAS Technology Innovation Hub @ Indian Statistical Institute, Kolkata",
+    orgUrl: "https://www.ideas-tih.org/",
+    points: [
+      "Established end-to-end workflows for keypoint annotation, object tracking, and semantic segmentation using tools like Label Studio, CVAT, and Fiji/ImageJ.",
+      "Performed large-scale keypoint labeling and object tracking on thermal image datasets, including validation, correction, and iterative improvements.",
+      "Conducted semantic segmentation of aerial imagery using polygon-based annotation, ensuring high accuracy and dataset consistency.",
+      "Developed Python scripts to visualize annotations, tracking trajectories, and segmentation outputs for improved analysis and quality verification.",
+      "Deployed and configured annotation platforms (Label Studio and CVAT) on Ubuntu using Docker, and explored open-source models like Qwen2.5-VL-3B and Grounding DINO with supporting Colab notebooks and documentation.",
+    ],
+    tags: ["Label Studio", "CVAT", "Fiji/ImageJ", "Docker", "Python", "Qwen2.5-VL"],
+  },
+  {
+    role: "Trainee Intern",
+    period: "Nov 2025 — Dec 2025",
+    org: "Indian Statistical Institute, Kolkata",
+    orgUrl: "https://www.isical.ac.in/",
+    points: [
+      "Worked on deep learning–based automatic speech recognition (ASR) under faculty supervision, focusing on improving audio preprocessing and recognition accuracy.",
+      "Studied and analyzed recent ASR research, with emphasis on feature extraction, speech enhancement, and end-to-end model architectures.",
+      "Designed and ran controlled experiments using tools like Librosa, DeepFilterNet, and SepFormer for audio preprocessing, speech separation, and evaluation.",
+      "Built prototype pipelines for data preparation, feature engineering, and early-stage model testing to support iterative experimentation.",
+      "Conducted structured testing and error analysis, while maintaining clear documentation of experiment setups, code, and results to support reproducibility and improvements.",
+    ],
+    tags: ["Librosa", "DeepFilterNet", "SepFormer", "Deep Learning"],
+  },
+];
+
+export const skillGroups = [
+  {
+    title: "Programming & Query Languages",
+    skills: ["Python", "SQL"],
+  },
+  {
+    title: "Databases & SQL Engines",
+    skills: ["PostgreSQL", "MySQL"],
+  },
+  {
+    title: "Core Python Libraries",
+    skills: [
+      "NumPy",
+      "Pandas",
+      "Matplotlib",
+      "Seaborn",
+      "scikit-learn",
+      "TensorFlow",
+      "PyTorch",
+      "OpenCV",
+      "Librosa",
+    ],
+  },
+  {
+    title: "Statistical & Machine Learning",
+    skills: [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Statistical Analysis",
+      "Model Evaluation & Validation",
+    ],
+  },
+  {
+    title: "Business Intelligence & Data Visualization",
+    skills: ["Excel", "Spreadsheet", "Power BI", "Tableau"],
+  },
+  {
+    title: "Development Environments & IDEs",
+    skills: [
+      "Visual Studio Code",
+      "PyCharm",
+      "Jupyter Notebook",
+      "Google Colab",
+      "StarUML",
+      "Weka",
+      "GitHub",
+    ],
+  },
+  {
+    title: "Visual Data Annotation Stack",
+    skills: ["CVAT", "Fiji", "Label Studio"],
+  },
+];
+
+export type Education = {
+  degree: string;
+  school: string;
+  period: string;
+  scoreLabel: string;
+  score: string;
+  resultUrl: string;
+};
+
+export const education: Education[] = [
+  {
+    degree: "Master of Computer Applications (MCA)",
+    school: "Sister Nivedita University",
+    period: "Sep 2023 — Jun 2025",
+    scoreLabel: "CGPA",
+    score: "7.96",
+    resultUrl: "https://drive.google.com/file/d/1gGVP4eCzIvwUSB4feYYVD3vI8-7dhRsk/view?usp=sharing",
+  },
+  {
+    degree: "Bachelor of Computer Applications (BCA)",
+    school: "Techno Main Salt Lake",
+    period: "Nov 2020 — Jul 2023",
+    scoreLabel: "CGPA",
+    score: "8.99",
+    resultUrl:
+      "https://drive.google.com/file/d/1RLdwbKibmqYNIRbPGJE89v3vrfRJCg_u/view?usp=drive_link",
+  },
+  {
+    degree: "12th Boards (WBCHSE)",
+    school: "Malangapara KCB Institution",
+    period: "2020",
+    scoreLabel: "PERCENTAGE",
+    score: "77.4%",
+    resultUrl: "https://drive.google.com/file/d/1bsX_-FfvwiFkc93iRzhsQYrP1rJA_MRV/view?usp=sharing",
+  },
+  {
+    degree: "10th Boards (WBBSE)",
+    school: "Malangapara KCB Institution",
+    period: "2018",
+    scoreLabel: "PERCENTAGE",
+    score: "66.6%",
+    resultUrl: "https://drive.google.com/file/d/11-8Yp5sBTch6rHP6pEpz8KtyDLtO_i5Y/view?usp=sharing",
+  },
+];
+
+export type Project = {
+  title: string;
+  category: "Analytics & BI" | "SQL & Data" | "Machine Learning" | "AI & NLP" | "Tools & Web";
+  year: string;
+  tech: string[];
+  description: string;
+  url: string;
+  featured?: boolean;
+};
+
+export const projectCategories = [
+  "All",
+  "Analytics & BI",
+  "SQL & Data",
+  "Machine Learning",
+  "AI & NLP",
+  "Tools & Web",
+] as const;
+
+export const projects: Project[] = [
+  {
+    title: "BanglaVLM",
+    category: "AI & NLP",
+    year: "2026",
+    tech: ["PyTorch", "VLM", "Fine-tuning", "Bangla NLP"],
+    description:
+      "Fine-tuning vision-language models for Bengali — building low-resource multimodal understanding for one of the world's most under-served language communities.",
+    url: "https://github.com/bhaskarpal1707/BanglaVLM",
+    featured: true,
+  },
+  {
+    title: "PhonePe Transaction Analysis",
+    category: "Analytics & BI",
+    year: "2026",
+    tech: ["Power BI", "DAX", "Excel"],
+    description:
+      "Interactive Power BI dashboard analyzing PhonePe transaction trends across India — volume, category mix, and state-level growth patterns at a glance.",
+    url: "https://github.com/bhaskarpal1707/phonepe-analysis-powerbi",
+    featured: true,
+  },
+  {
+    title: "Customer Churn Analysis",
+    category: "Machine Learning",
+    year: "2026",
+    tech: ["Python", "scikit-learn", "Pandas", "Seaborn"],
+    description:
+      "End-to-end churn prediction pipeline — EDA, feature engineering, and model evaluation to surface the retention levers that matter most.",
+    url: "https://github.com/bhaskarpal1707/customers-churn-analysis-python",
+    featured: true,
+  },
+  {
+    title: "Vendor Performance Analysis",
+    category: "SQL & Data",
+    year: "2025",
+    tech: ["SQL", "Python", "Power BI", "Pandas"],
+    description:
+      "Full-stack retail analytics: SQL pipelines for ingestion, Python for profit-margin and inventory-turn analysis, and a Power BI layer for vendor scorecards.",
+    url: "https://github.com/bhaskarpal1707/vendor-performance-analysis-sql-python-powerbi",
+    featured: true,
+  },
+  {
+    title: "Blinkit Sales Analysis",
+    category: "SQL & Data",
+    year: "2025",
+    tech: ["MySQL", "SQL", "Workbench"],
+    description:
+      "Comprehensive SQL analysis of Blinkit's sales performance, customer satisfaction, and inventory distribution — Total Sales, Avg Sales, Item Count and Avg Rating KPIs.",
+    url: "https://github.com/bhaskarpal1707/Blinkit-Analysis-SQL-Project",
+    featured: true,
+  },
+  {
+    title: "Spotify Dashboard — Power BI",
+    category: "Analytics & BI",
+    year: "2025",
+    tech: ["Power BI", "DAX", "Data Modeling"],
+    description:
+      "A music intelligence dashboard: streams, artists, and listening trends rendered as an interactive Power BI experience.",
+    url: "https://github.com/bhaskarpal1707/spotify-analysis-dashboard-powerbi",
+    featured: true,
+  },
+  {
+    title: "BanglaSum — Qwen3 · XLSum",
+    category: "AI & NLP",
+    year: "2026",
+    tech: ["Qwen3", "LLM", "Fine-tuning", "Summarization"],
+    description:
+      "Adapting Qwen3 for Bengali abstractive summarization on XLSum — dataset curation, LoRA fine-tuning and ROUGE-driven evaluation.",
+    url: "https://github.com/bhaskarpal1707/BanglaSum-Qwen3-XLSum",
+  },
+  {
+    title: "LaTeX OCR — Qwen3.5 Fine-tune",
+    category: "AI & NLP",
+    year: "2026",
+    tech: ["Qwen3.5", "OCR", "Vision", "LaTeX"],
+    description:
+      "Fine-tuning a multimodal LLM to read rendered math and emit clean LaTeX — an experiment in precise, structured visual transcription.",
+    url: "https://github.com/bhaskarpal1707/qwen3.5-latex-ocr-finetune-v2",
+  },
+  {
+    title: "Language Detection App",
+    category: "AI & NLP",
+    year: "2026",
+    tech: ["Python", "Naive Bayes", "Streamlit", "NLP"],
+    description:
+      "A Streamlit web app that classifies text across languages using CountVectorizer + Naive Bayes — deployed for instant, interactive inference.",
+    url: "https://github.com/bhaskarpal1707/Language-Detection-App",
+  },
+  {
+    title: "E-commerce Funnel Analysis",
+    category: "Analytics & BI",
+    year: "2026",
+    tech: ["Python", "Pandas", "Plotly"],
+    description:
+      "Tracing users from visit to purchase — funnel drop-off analysis that quantifies where conversion leaks and what to fix first.",
+    url: "https://github.com/bhaskarpal1707/e-commerce-funnel-analysis",
+  },
+  {
+    title: "Banking Churn & Risk Analysis",
+    category: "Analytics & BI",
+    year: "2025",
+    tech: ["Excel", "Power BI", "Risk Analytics"],
+    description:
+      "Banking customer churn and credit-risk analysis blending Excel modeling with Power BI storytelling for account-retention strategy.",
+    url: "https://github.com/bhaskarpal1707/banking-customers-churn-and-risk-analysis-excel-powerbi",
+  },
+  {
+    title: "Airbnb Data Analysis",
+    category: "Analytics & BI",
+    year: "2025",
+    tech: ["Python", "Pandas", "NumPy", "Visualization"],
+    description:
+      "Exploratory analysis of Airbnb listings — pricing dynamics, availability patterns, and location-driven demand insights.",
+    url: "https://github.com/bhaskarpal1707/Airbnb-Data-Analysis-Project-",
+  },
+  {
+    title: "Online Courses Analysis",
+    category: "Analytics & BI",
+    year: "2025",
+    tech: ["Power BI", "Excel"],
+    description:
+      "Market analysis of online learning platforms — enrollment trends, pricing tiers, and category performance in a multi-page dashboard.",
+    url: "https://github.com/bhaskarpal1707/online-courses-analysis-powerbi",
+  },
+  {
+    title: "Hospital ER Analysis",
+    category: "Analytics & BI",
+    year: "2025",
+    tech: ["Excel", "Dashboards", "Pivot Tables"],
+    description:
+      "Emergency-room operations dashboard in advanced Excel — patient flow, wait times, and admission patterns for capacity decisions.",
+    url: "https://github.com/bhaskarpal1707/Hospital-Emergency-Room-Analysis-Using_Excel",
+  },
+  {
+    title: "Spotify Data Analysis — SQL",
+    category: "SQL & Data",
+    year: "2025",
+    tech: ["PostgreSQL", "SQL", "Window Functions"],
+    description:
+      "Query-driven analysis of a Spotify dataset — advanced joins, CTEs, and window functions to rank artists, tracks, and engagement.",
+    url: "https://github.com/bhaskarpal1707/Spotify-Data-Analysis-using-SQL",
+  },
+  {
+    title: "Zepto Inventory Analysis",
+    category: "SQL & Data",
+    year: "2025",
+    tech: ["MySQL", "SQL", "Data Cleaning"],
+    description:
+      "Rapid-fire SQL exploration of Zepto's quick-commerce catalog — pricing outliers, discount structure, and inventory signals.",
+    url: "https://github.com/bhaskarpal1707/Zepto-Analysis-SQL-Project",
+  },
+  {
+    title: "Walmart Sales Analysis",
+    category: "SQL & Data",
+    year: "2025",
+    tech: ["Python", "Pandas", "SQL"],
+    description:
+      "Holiday-vs-weekday sales patterns across branches — feature engineering plus SQL checks to explain revenue swings.",
+    url: "https://github.com/bhaskarpal1707/Walmart_Sales_Analysis",
+  },
+  {
+    title: "Boston House Price Prediction",
+    category: "Machine Learning",
+    year: "2025",
+    tech: ["scikit-learn", "Regression", "Python"],
+    description:
+      "Classic regression benchmark rebuilt properly — EDA, correlation pruning, and regularized models with honest evaluation.",
+    url: "https://github.com/bhaskarpal1707/boston-house-pricing-prediction-analysis",
+  },
+  {
+    title: "Churn Insights — Telecom",
+    category: "Machine Learning",
+    year: "2025",
+    tech: ["Python", "EDA", "Classification"],
+    description:
+      "Identified churn drivers: month-to-month contracts (42% churn), electronic checks (45%), first-year customers (50%) — analysis turned into retention actions.",
+    url: "https://github.com/bhaskarpal1707/Customer-Churn-Analysis",
+  },
+  {
+    title: "Uber Data Analysis",
+    category: "Machine Learning",
+    year: "2025",
+    tech: ["Python", "Pandas", "Folium"],
+    description:
+      "Ride-request exploration — hourly demand heat, peak-day patterns, and geographic pickup distributions visualized on maps.",
+    url: "https://github.com/bhaskarpal1707/Uber-Data-Analysis",
+  },
+  {
+    title: "Road Accident Analysis",
+    category: "Analytics & BI",
+    year: "2025",
+    tech: ["Excel", "Dashboarding", "Data Cleaning"],
+    description:
+      "Advanced Excel project covering the full chain — cleaning, processing, and an interactive accident-severity dashboard.",
+    url: "https://github.com/bhaskarpal1707/Road-Accident-Analysis-Excel-",
+  },
+  {
+    title: "Google Search Analysis",
+    category: "Machine Learning",
+    year: "2025",
+    tech: ["Python", "Pytrends", "Visualization"],
+    description:
+      "Trend mining on Google search interest — comparing query topics over time to read the public's data-science curiosity curve.",
+    url: "https://github.com/bhaskarpal1707/Google-Search-Analysis",
+  },
+  {
+    title: "Website Performance Analysis",
+    category: "Machine Learning",
+    year: "2025",
+    tech: ["Python", "Pandas", "Analytics"],
+    description:
+      "Traffic and engagement audit — session quality, channel performance, and user-behavior signals that inform growth decisions.",
+    url: "https://github.com/bhaskarpal1707/Website-Performance-Analysis",
+  },
+  {
+    title: "NeuralCanvas",
+    category: "Tools & Web",
+    year: "2026",
+    tech: ["HTML", "Canvas", "JavaScript"],
+    description:
+      "A generative-art playground in the browser — neural-inspired visuals drawn live on HTML canvas.",
+    url: "https://github.com/bhaskarpal1707/NeuralCanvas",
+  },
+  {
+    title: "CmdHub",
+    category: "Tools & Web",
+    year: "2026",
+    tech: ["JavaScript", "Web App"],
+    description:
+      "A curated command-hub web utility — quick access to the snippets and commands used most in day-to-day work.",
+    url: "https://github.com/bhaskarpal1707/CmdHub",
+  },
+  {
+    title: "MarkForge",
+    category: "Tools & Web",
+    year: "2026",
+    tech: ["JavaScript", "Markdown", "Web App"],
+    description:
+      "A lightweight markdown forge — write, preview, and polish markdown documents in a distraction-free interface.",
+    url: "https://github.com/bhaskarpal1707/MarkForge",
+  },
+];
+
+export type Certification = {
+  title: string;
+  issuer: string;
+  year: string;
+  url: string;
+};
+
+/**
+ * NOTE: certifications mirror your old portfolio / LinkedIn.
+ * Edit this list anytime — links currently point to your LinkedIn profile.
+ */
+export const certifications: Certification[] = [
+  {
+    title: "Harnessing the Power of Data with Power BI",
+    issuer: "Microsoft",
+    year: "2025",
+    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+  },
+  {
+    title: "Google Data Analytics Professional Certificate",
+    issuer: "Google",
+    year: "2025",
+    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+  },
+  {
+    title: "SQL (Advanced) Certificate",
+    issuer: "HackerRank",
+    year: "2025",
+    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+  },
+  {
+    title: "Python for Data Science, AI & Development",
+    issuer: "IBM · Coursera",
+    year: "2025",
+    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+  },
+  {
+    title: "Tableau Desktop Specialist Training",
+    issuer: "Tableau",
+    year: "2025",
+    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+  },
+  {
+    title: "Machine Learning Specialization",
+    issuer: "DeepLearning.AI",
+    year: "2025",
+    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+  },
+  {
+    title: "Excel Skills for Business",
+    issuer: "Macquarie University · Coursera",
+    year: "2024",
+    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+  },
+  {
+    title: "Supervised Machine Learning: Regression & Classification",
+    issuer: "DeepLearning.AI · Stanford Online",
+    year: "2024",
+    url: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
+  },
+];
+
+export const stats = [
+  { value: "25+", label: "Projects shipped" },
+  { value: "3", label: "Research internships" },
+  { value: "8+", label: "Certifications" },
+  { value: "5+", label: "Years of code" },
+];
+
+export const marqueeSkills = [
+  "Python",
+  "SQL",
+  "Power BI",
+  "PyTorch",
+  "scikit-learn",
+  "Pandas",
+  "Tableau",
+  "PostgreSQL",
+  "TensorFlow",
+  "Excel",
+  "Machine Learning",
+  "Data Storytelling",
+  "Librosa",
+  "OpenCV",
+  "MySQL",
+  "Label Studio",
+];
