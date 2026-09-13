@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Cursor from "./Cursor";
+import ScrollProgress from "./ScrollProgress";
 
 /** Shared chrome: animated background layers + nav + routed page + footer. */
 export default function PageShell() {
@@ -32,6 +33,7 @@ export default function PageShell() {
       />
 
       <Cursor />
+      <ScrollProgress />
       <Navbar />
 
       <main className="relative z-10">

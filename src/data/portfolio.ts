@@ -5,6 +5,9 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
+import portraitImg from "@/assets/bhaskar-portrait.jpg";
+import aboutImg from "@/assets/bhaskar-about.jpg";
+
 export const profile = {
   name: "Bhaskar Pal",
   firstName: "Bhaskar",
@@ -19,9 +22,12 @@ export const profile = {
   phone: "+91-73188285978",
   github: "https://github.com/bhaskarpal1707",
   linkedin: "https://www.linkedin.com/in/bhaskar-pal-2k02/",
-  avatar: "https://avatars.githubusercontent.com/u/98514594?v=4",
-  aboutImage: "https://bhaskarpal1707.github.io/portfolio/assets/img/image%202.jpg",
+  avatar: portraitImg,
+  aboutImage: aboutImg,
   resume: "resume.pdf",
+  /** Leave "" to auto-probe: /video.mp4 in `public/`, then the old portfolio's
+   *  video paths. Or set an absolute URL to your reel here. */
+  videoUrl: "",
 };
 
 export const navLinks = [
@@ -538,10 +544,10 @@ export const certifications: Certification[] = [
 ];
 
 export const stats = [
-  { value: "25+", label: "Projects shipped" },
-  { value: "3", label: "Research internships" },
-  { value: "8+", label: "Certifications" },
-  { value: "5+", label: "Years of code" },
+  { value: 26, suffix: "+", label: "Projects shipped" },
+  { value: 3, suffix: "", label: "Research internships" },
+  { value: 8, suffix: "+", label: "Certifications" },
+  { value: 5, suffix: "+", label: "Years of code" },
 ];
 
 export const marqueeSkills = [

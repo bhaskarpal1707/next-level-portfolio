@@ -1,8 +1,13 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Building2 } from "lucide-react";
 import { experiences } from "@/data/portfolio";
-import { Reveal, SectionHeading, TagChip } from "@/components/portfolio/Primitives";
+import { SectionHeading, TagChip } from "@/components/portfolio/Primitives";
 
+/**
+ * Sticky stacking cards: each internship card pins under the header and the
+ * next one scrolls up over it — with a subtle scale + dim on the buried card.
+ */
 export default function Experience() {
   return (
     <div className="pt-28">
@@ -18,68 +23,84 @@ export default function Experience() {
         />
       </section>
 
-      <section className="mx-auto max-w-4xl px-4 pt-16 sm:px-6">
-        <div className="relative">
-          {/* vertical rail */}
-          <div className="timeline-line absolute bottom-4 left-[15px] top-2 w-px sm:left-[19px]" />
-
-          <div className="space-y-12">
-            {experiences.map((exp, i) => (
-              <Reveal key={exp.role + exp.period} delay={i * 0.08}>
-                <div className="relative pl-12 sm:pl-16">
-                  {/* node */}
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.15 + i * 0.08, type: "spring", stiffness: 300, damping: 18 }}
-                    className="absolute left-0 top-1.5 grid h-8 w-8 place-items-center rounded-full border border-amber-400/50 bg-[#14110c] sm:h-10 sm:w-10"
-                  >
-                    <span className="h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_12px_rgba(94,234,212,0.9)]" />
-                  </motion.span>
-
-                  <div className="glass glass-hover noise relative overflow-hidden rounded-2xl p-6 sm:p-8">
-                    <div className="flex flex-wrap items-start justify-between gap-3">
-                      <div>
-                        <h3 className="font-display text-xl font-semibold text-stone-100 sm:text-2xl">
-                          {exp.role}
-                        </h3>
-                        <a
-                          href={exp.orgUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-2 inline-flex items-center gap-2 text-sm text-amber-400/90 transition-colors hover:text-amber-300"
-                        >
-                          <Building2 className="h-3.5 w-3.5" />
-                          {exp.org}
-                        </a>
-                      </div>
-                      <span className="glass rounded-full px-4 py-1.5 font-mono2 text-[11px] tracking-[0.18em] text-amber-300/90">
-                        {exp.period}
-                      </span>
-                    </div>
-
-                    <ul className="mt-6 space-y-3">
-                      {exp.points.map((pt, j) => (
-                        <li key={j} className="flex gap-3 text-sm leading-relaxed text-stone-400">
-                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber-400/70" />
-                          {pt}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {exp.tags.map((t) => (
-                        <TagChip key={t}>{t}</TagChip>
-                      ))}
-                    </div>
+      <section className="mx-auto max-w-4xl px-4 pt-14 sm:px-6">
+        <div className="space-y-8">
+          {experiences.map((exp, i) => (
+            <StackCard key={exp.role + exp.period} index={i} total={experiences.length}>
+              <div className="glass noise relative overflow-hidden rounded-3xl p-7 sm:p-9">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="font-mono2 text-[10px] uppercase tracking-[0.3em] text-slate-500">
+                      {String(i + 1).padStart(2, "0")} · {exp.period}
+                    </p>
+                    <h3 className="font-display mt-3 text-2xl font-semibold text-slate-100 sm:text-3xl">
+                      {exp.role}
+                    </h3>
+                    <a
+                      href={exp.orgUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-2.5 inline-flex items-center gap-2 text-sm text-sky-300/90 transition-colors hover:text-sky-200"
+                    >
+                      <Building2 className="h-3.5 w-3.5" />
+                      {exp.org}
+                    </a>
                   </div>
                 </div>
-              </Reveal>
-            ))}
-          </div>
+
+                <ul className="mt-7 space-y-3">
+                  {exp.points.map((pt, j) => (
+                    <li key={j} className="flex gap-3 text-sm leading-relaxed text-slate-400">
+                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-sky-300/70" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-7 flex flex-wrap gap-2">
+                  {exp.tags.map((t) => (
+                    <TagChip key={t}>{t}</TagChip>
+                  ))}
+                </div>
+              </div>
+            </StackCard>
+          ))}
         </div>
       </section>
+    </div>
+  );
+}
+
+function StackCard({
+  children,
+  index,
+  total,
+}: {
+  children: React.ReactNode;
+  index: number;
+  total: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  // buried cards sink back and dim as the next card covers them
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
+  const filter = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["brightness(1)", "brightness(0.55)"],
+  );
+
+  return (
+    <div
+      ref={ref}
+      className="sticky"
+      style={{ top: `calc(6.5rem + ${index * 1.5}rem)` }}
+      data-stack-total={total}
+    >
+      <motion.div style={{ scale, filter }}>{children}</motion.div>
     </div>
   );
 }
